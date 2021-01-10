@@ -9,6 +9,11 @@ function phpShowSystemFeedback($feedback_id) {
             $feedback_text="This email is already used!";
             break;
 
+        case "808":
+            $feedback_type="danger";
+            $feedback_text="Wrond email or password!";
+            break;
+
         case "811":
             $feedback_type="success";
             $feedback_text="Your account has been created! You can sign in!";
