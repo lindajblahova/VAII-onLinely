@@ -1,3 +1,4 @@
 php-apache
 public-html/db-password.inc.php
+public-html/phpmyadmin
 docker-compose.yml
