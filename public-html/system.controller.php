@@ -3,6 +3,15 @@ require ('db-connection.inc.php');
 /// DAJ TO DO KONTAJNERA !! (ROW)
 function phpShowSystemFeedback($feedback_id) {
     switch ($feedback_id) {
+        case "211":
+            $feedback_type="success";
+            $feedback_text="Data updated successfully!";
+            break;
+
+        case "212":
+            $feedback_type="success";
+            $feedback_text="Data removed successfully!";
+            break;
 
         case "804":
             $feedback_type="danger";
@@ -26,6 +35,21 @@ function phpShowSystemFeedback($feedback_id) {
 
 function phpShowInputFeedback($feedback_id) {
     switch ($feedback_id) {
+        case "201":
+            $feedback_type="is-invalid";
+            $feedback_text="First name must be between 3 and 15 characters long and can contain only letters.";
+            break;
+
+        case "202":
+            $feedback_type="is-invalid";
+            $feedback_text="Last name must be between 3 and 15 characters long and can contain only letters.";
+            break;
+
+        case "203":
+            $feedback_type="is-invalid";
+            $feedback_text="Nickname must be between 3 and 15 characters long and can contain only letters.";
+            break;
+
         case "801":
             $feedback_type="is-invalid";
             $feedback_text="This is not a valid email address";

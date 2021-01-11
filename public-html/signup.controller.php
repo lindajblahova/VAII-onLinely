@@ -26,8 +26,9 @@ if ($email_validation && $password_validation && $user_password == $_POST["formS
 
     //if no result is returned, insert new record to the table, otherwise display feedback
     if (!is_array($isAlreadySignedUp)) {
-        $db_data = array($user_email, $hashed_user_password);
-        phpModifyDB('INSERT INTO users (user_email, user_password) values (?, ?)', $db_data);
+        $db_data = array($user_email, $hashed_user_password, "", "", "");
+        phpModifyDB('INSERT INTO users (user_email, user_password, user_firstname, user_lastname, user_nickname) 
+        values (?, ?, ?, ?, ?)', $db_data);
         $db_data = "";
         $_SESSION["msgid"] = "811";
     } else {
