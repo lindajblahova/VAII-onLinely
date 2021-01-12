@@ -1,6 +1,14 @@
 function jsShowInputFeedback(elementId) {
 
     switch (elementId) {
+        case "formMessagingRecipient":
+            var feedbackMessage = "Choose the email address of the recipient."
+            break;
+
+        case "formMessagingContent":
+            var feedbackMessage = "Message can not be empty and can not contain '<' and '>' characters. "
+            break;
+
         case "formSettingsBasicsFirstName":
             var feedbackMessage = "First name must be between 3 and 15 characters long and can contain only letters."
             break;
@@ -12,6 +20,7 @@ function jsShowInputFeedback(elementId) {
         case "formSettingsBasicsNickName":
             var feedbackMessage = "Nickname must be between 3 and 15 characters long and can contain only letters."
             break;
+
     }
 
     return feedbackMessage;

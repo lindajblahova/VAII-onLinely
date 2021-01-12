@@ -75,6 +75,10 @@ if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
             include('settings.php');
             break;
 
+        case "messaging":
+            include('messaging.php');
+            break;
+
         default:
             break;
     }

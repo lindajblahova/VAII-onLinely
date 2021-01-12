@@ -13,6 +13,11 @@ function phpShowSystemFeedback($feedback_id) {
             $feedback_text="Data removed successfully!";
             break;
 
+        case "311":
+            $feedback_type="success";
+            $feedback_text="Message sent successfully!";
+            break;
+
         case "213":
             $feedback_type="success";
             $feedback_text="Password changed successfully!";
@@ -55,26 +60,15 @@ function phpShowInputFeedback($feedback_id) {
             $feedback_text="Nickname must be between 3 and 15 characters long and can contain only letters.";
             break;
 
-        case "204":
+        case "301":
             $feedback_type="is-invalid";
-            $feedback_text="Password must be between 8 and 16 characters long, with at least one uppercase and lowercase character, one number and one special character (@, *, $ or #).";
+            $feedback_text="Choose the email address of the recipient.";
             break;
 
-        case "205":
+        case "302":
             $feedback_type="is-invalid";
-            $feedback_text="Current password is invalid.";
+            $feedback_text="Message can not be empty and can not contain '<' and '>' characters.";
             break;
-
-        case "206":
-            $feedback_type="is-invalid";
-            $feedback_text="Password must be between 8 and 16 characters long, with at least one uppercase and lowercase character, one number and one special character (@, *, $ or #).";
-            break;
-
-        case "207":
-            $feedback_type="is-invalid";
-            $feedback_text="New password must be different from the current password.";
-            break;
-
 
         case "801":
             $feedback_type="is-invalid";
@@ -123,6 +117,17 @@ function phpFetchDB($db_query, $db_data) {
 
     //setting the fetch mode and returning the result
     return $statement->fetch(PDO::FETCH_ASSOC);
+}
+
+// Get the information from the database
+function phpFetchAllDB($db_query, $db_data) {
+    global $connection;
+
+    $statement = $connection->prepare($db_query);
+    $statement->execute($db_data);
+
+    //setting the fetch mode and returning the result
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function phpShowEmailInputValue($user_email) {
