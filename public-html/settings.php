@@ -62,3 +62,6 @@ $db_data = "";
         </form>
     </div>
 </div>
+
+
+<script src="settings.js"></script>

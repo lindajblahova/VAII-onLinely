@@ -13,6 +13,11 @@ function phpShowSystemFeedback($feedback_id) {
             $feedback_text="Data removed successfully!";
             break;
 
+        case "213":
+            $feedback_type="success";
+            $feedback_text="Password changed successfully!";
+            break;
+
         case "804":
             $feedback_type="danger";
             $feedback_text="This email is already used!";
@@ -50,6 +55,27 @@ function phpShowInputFeedback($feedback_id) {
             $feedback_text="Nickname must be between 3 and 15 characters long and can contain only letters.";
             break;
 
+        case "204":
+            $feedback_type="is-invalid";
+            $feedback_text="Password must be between 8 and 16 characters long, with at least one uppercase and lowercase character, one number and one special character (@, *, $ or #).";
+            break;
+
+        case "205":
+            $feedback_type="is-invalid";
+            $feedback_text="Current password is invalid.";
+            break;
+
+        case "206":
+            $feedback_type="is-invalid";
+            $feedback_text="Password must be between 8 and 16 characters long, with at least one uppercase and lowercase character, one number and one special character (@, *, $ or #).";
+            break;
+
+        case "207":
+            $feedback_type="is-invalid";
+            $feedback_text="New password must be different from the current password.";
+            break;
+
+
         case "801":
             $feedback_type="is-invalid";
             $feedback_text="This is not a valid email address";
@@ -71,7 +97,7 @@ function phpShowInputFeedback($feedback_id) {
             break;
 
         default:
-            $feedback_type="is-invalid";
+            $feedback_type="";
             $feedback_text="Unspecified error or warning";
             break;
     }

@@ -2,8 +2,12 @@
 session_start();
 require('system.controller.php');
 
-if (!isset($_SESSION["uid"]) || $_SESSION["uid"] == "") {
-    header('Location: index.php');
+if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
+    $db_data = array($_SESSION["uid"]);
+    //fetching the row by email, fetch returns the first (and only) result entry
+    $dbUserRow = phpFetchDB('SELECT * FROM users WHERE user_id = ?', $db_data);
+    $db_data = "";
+
 }?>
 
 <!DOCTYPE html>
@@ -32,6 +36,10 @@ if (!isset($_SESSION["uid"]) || $_SESSION["uid"] == "") {
                 <a class="nav-link" href="gate.php">Home<?php if ($_GET['module']=='') { ?>
                         <span class="sr-only">(current)</span><?php } ?></a>
             </li>
+            <li class="nav-item <?php if ($_GET['module']=='messaging') {echo 'active'; } ?>">
+                <a class="nav-link" href="gate.php?module=messaging">Messaging<?php if ($_GET['module']=='messaging') { ?>
+                        <span class="sr-only">(current)</span><?php } ?></a>
+            </li>
             <li class="nav-item <?php if ($_GET['module']=='settings') {echo 'active'; } ?>">
                 <a class="nav-link" href="gate.php?module=settings">Settings<?php if ($_GET['module']=='settings') { ?>
                         <span class="sr-only">(current)</span><?php } ?></a>
@@ -40,6 +48,9 @@ if (!isset($_SESSION["uid"]) || $_SESSION["uid"] == "") {
                 <a class="nav-link" href="logout.controller.php">Logout</a>
             </li>
         </ul>
+        <a class="nav-link-user" href="#"><?php if (isset($dbUserRow["user_email"])) {
+                echo $dbUserRow["user_email"];
+            } ?></a>
     </div>
 </nav>
 
@@ -73,7 +84,7 @@ if (!isset($_SESSION["uid"]) || $_SESSION["uid"] == "") {
 </div>
 
 
-<?php $_SESSION["msgid"]=""; ?>
+<?php $_SESSION["msgid"]="";?>
 
 <script src="gate.js"></script>
 

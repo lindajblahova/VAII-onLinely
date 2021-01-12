@@ -116,7 +116,8 @@ require('system.controller.php'); ?>
 </div>
 
 <?php $_SESSION["msgid"] = "";
-$_SESSION["formSignUpEmail"] = "" ?>
+$_SESSION["formSignUpEmail"] = ""
+?>
 
 <script src="index.js"></script>
 

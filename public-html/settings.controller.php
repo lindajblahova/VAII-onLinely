@@ -62,5 +62,7 @@ if(isset($_POST["formSettingsBasicsClear"])) {
 }
 
 
+
 header('Location: gate.php?module=settings');
+
 ?>
