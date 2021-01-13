@@ -1,10 +1,6 @@
 <?php
 
 if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
-    $db_data = array($_SESSION["uid"]);
-    //fetching the row by email, fetch returns the first (and only) result entry
-    $dbUserRow = phpFetchDB('SELECT * FROM users WHERE user_id = ?', $db_data);
-    $db_data = "";
 
     $db_data = array();     // array of arrays
     $dbRecipientsList = phpFetchAllDB('SELECT * FROM users', $db_data);

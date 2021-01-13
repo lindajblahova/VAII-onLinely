@@ -13,15 +13,31 @@ function phpShowSystemFeedback($feedback_id) {
             $feedback_text="Data removed successfully!";
             break;
 
+        case "213":
+            $feedback_type="success";
+            $feedback_text="Password changed successfully!";
+            break;
+
         case "311":
             $feedback_type="success";
             $feedback_text="Message sent successfully!";
             break;
 
-        case "213":
+        case "411":
             $feedback_type="success";
-            $feedback_text="Password changed successfully!";
+            $feedback_text="Group has been created successfully!";
             break;
+
+        case "412":
+            $feedback_type="success";
+            $feedback_text="Group name has been changed successfully!";
+            break;
+
+        case "511":
+            $feedback_type="success";
+            $feedback_text="Post has been created successfully!";
+            break;
+
 
         case "804":
             $feedback_type="danger";
@@ -68,6 +84,16 @@ function phpShowInputFeedback($feedback_id) {
         case "302":
             $feedback_type="is-invalid";
             $feedback_text="Message can not be empty and can not contain '<' and '>' characters.";
+            break;
+
+        case "401":
+            $feedback_type="is-invalid";
+            $feedback_text="Group name can not be empty and can not contain '<' and '>' characters.";
+            break;
+
+        case "501":
+            $feedback_type="is-invalid";
+            $feedback_text="Post can not be empty and can not contain '<' and '>' characters.";
             break;
 
         case "801":
@@ -145,6 +171,20 @@ function phpGetUserEmail($user_id) {
     $db_data = array($user_id);
     $db_result = phpFetchDB('SELECT user_email FROM users WHERE user_id = ?', $db_data);
     return $db_result['user_email'];
+}
+
+// Return group's name based on its id
+function phpGetGroupName($group_id) {
+    $db_data = array($group_id);
+    $db_result = phpFetchDB('SELECT group_name FROM groups WHERE group_id = ?', $db_data);
+    return $db_result['group_name'];
+}
+
+// Return group's owner id based on group's id
+function phpGetGroupOwnerID($group_id) {
+    $db_data = array($group_id);
+    $db_result = phpFetchDB('SELECT group_owner_id FROM groups WHERE group_id = ?', $db_data);
+    return $db_result['group_owner_id'];
 }
 
 

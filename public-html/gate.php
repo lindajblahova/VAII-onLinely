@@ -1,14 +1,11 @@
 <?php
 session_start();
 require('system.controller.php');
-
-if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
-    $db_data = array($_SESSION["uid"]);
-    //fetching the row by email, fetch returns the first (and only) result entry
-    $dbUserRow = phpFetchDB('SELECT * FROM users WHERE user_id = ?', $db_data);
-    $db_data = "";
-
-}?>
+$db_data = array($_SESSION["uid"]);
+//fetching the row by email, fetch returns the first (and only) result entry
+$dbUserRow = phpFetchDB('SELECT * FROM users WHERE user_id = ?', $db_data);
+$db_data = "";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +37,11 @@ if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
                 <a class="nav-link" href="gate.php?module=messaging">Messaging<?php if ($_GET['module']=='messaging') { ?>
                         <span class="sr-only">(current)</span><?php } ?></a>
             </li>
+            <li class="nav-item <?php if ($_GET['module']=='groups') { echo 'active'; } ?>">
+                <a class="nav-link" href="gate.php?module=groups">Groups<?php if ($_GET['module']=='groups')
+                { ?><span class="sr-only"> (current)</span><?php } ?></a>
+            </li>
+
             <li class="nav-item <?php if ($_GET['module']=='settings') {echo 'active'; } ?>">
                 <a class="nav-link" href="gate.php?module=settings">Settings<?php if ($_GET['module']=='settings') { ?>
                         <span class="sr-only">(current)</span><?php } ?></a>
@@ -68,6 +70,14 @@ if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
     <?php } ?>
     <!-- SYSTEM-WIDE FEEDBACK -->
 
+    <?php
+    if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
+    $db_data = array($_SESSION["uid"]);
+    //fetching the row by email, fetch returns the first (and only) result entry
+    $dbUserRow = phpFetchDB('SELECT * FROM users WHERE user_id = ?', $db_data);
+    $db_data = "";
+    ?>
+
     <!-- LOAD MODULE -->
     <?php
     switch ($_GET["module"]) {
@@ -79,12 +89,25 @@ if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
             include('messaging.php');
             break;
 
+        case "group":
+            include('group.php');
+            break;
+
+        case "groups":
+            include('groups.php');
+            break;
+
+        case "posts":
+            include('posts.php');
+            break;
+
         default:
             break;
     }
     ?>
     <!-- LOAD MODULE -->
 
+    <?php } ?>
 </div>
 
 

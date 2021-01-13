@@ -21,6 +21,14 @@ function jsShowInputFeedback(elementId) {
             var feedbackMessage = "Nickname must be between 3 and 15 characters long and can contain only letters."
             break;
 
+        case "formGroupName":
+            var feedbackMessage = "Group name can not be empty and can not contain '<' and '>' characters."
+            break;
+
+        case "formPostContent":
+            var feedbackMessage = "Post can not be empty and can not contain '<' and '>' characters."
+            break;
+
     }
 
     return feedbackMessage;
