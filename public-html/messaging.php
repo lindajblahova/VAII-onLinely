@@ -64,6 +64,7 @@ if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
 
     <p><strong>Latest messages</strong></p>
 
+
     <div class="row">
         <div class="col-lg-12">
             <table class="table">

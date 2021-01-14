@@ -34,13 +34,13 @@ if ($email_validation && $password_validation) { //query the database only if em
 
         //echo "user ok, password ok -> allow user in the system -> feedback message";
         $_SESSION["uid"] = $dbUserRow["user_id"];
-        header('Location: gate.php');
+        header('Location: gate.php?module=home');
     }
 
 
 } else { //not regex pattern compliant -> cannot be in the database, don't query the database, return feedback
 
-    echo "not regex compliant -> wrong email or password -> feedback message";
+    //echo "not regex compliant -> wrong email or password -> feedback message";
     //$_SESSION["msgid"] = "";
     //header('Location: index.php');
 }
