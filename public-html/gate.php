@@ -47,6 +47,11 @@ $db_data = "";
                         <span class="sr-only">(current)</span><?php } ?></a>
             </li>
 
+            <li class="nav-item <?php if ($_GET['module']=='profiles') {echo 'active'; } ?>">
+                <a class="nav-link" href="gate.php?module=profiles">Profiles<?php if ($_GET['module']=='settings') { ?>
+                        <span class="sr-only">(current)</span><?php } ?></a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="logout.controller.php">Logout</a>
             </li>
@@ -105,6 +110,10 @@ $db_data = "";
 
         case "posts":
             include('posts.php');
+            break;
+
+        case "profiles":
+            include('profiles.php');
             break;
 
         default:

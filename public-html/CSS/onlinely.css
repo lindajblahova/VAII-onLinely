@@ -13,6 +13,15 @@
     margin-top: auto;
 }
 
+.icon {
+    width: 40px;
+    height: 40px;
+}
+
+.icon_close {
+    background-image: url('');
+}
+
 .card_margin {
     margin-top: 25%;
 }
@@ -69,6 +78,10 @@ hr {
 
 .form_posts_content {
     margin-bottom: .25rem;
+}
+
+.my_margin_post {
+    margin-top: 2rem;
 }
 
 .my_form_group {

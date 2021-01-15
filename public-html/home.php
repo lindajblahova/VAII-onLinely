@@ -75,11 +75,12 @@ $db_data = "";
 
         <?php foreach ($dbPostsList as $dbPostRow) { ?>
 
-            <div class="message_header">
-                FROM: <?php echo phpGetUserEmail($dbPostRow["post_author_id"]); ?>
-                | IN GROUP: <?php echo phpGetGroupName($dbPostRow["post_group_id"]);  ?>
-                | DATE: <?php echo $dbPostRow["post_date"]; ?>
+            <div class="message_header mt-4 mb-5" style="clear: both">
+                <h4 style="float: left"><?php echo phpGetUserEmail($dbPostRow["post_author_id"]); ?>
+                | IN GROUP: <?php echo phpGetGroupName($dbPostRow["post_group_id"]); ?></h4>
+                <h4 style="float: right"><?php echo $dbPostRow["post_date"]; ?></h4>
             </div>
+            <hr style="border-top: 1px solid white;">
 
             <div id="databasePostsContent<?php echo $dbPostRow['post_id'];?>"
                  class="message_content"><?php echo $dbPostRow["post_content"]; ?></div>
