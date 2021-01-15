@@ -1,19 +1,24 @@
 var jsSettingsBasicsFirstName = document.getElementById("formSettingsBasicsFirstName");
 var jsSettingsBasicsLastName = document.getElementById("formSettingsBasicsLastName");
 var jsSettingsBasicsNickName = document.getElementById("formSettingsBasicsNickName");
+var jsSettingsBasicsAge = document.getElementById("formSettingsBasicsAge");
+var jsSettingsBasicsTown = document.getElementById("formSettingsBasicsTown");
+var jsSettingsBasicsGender = document.getElementById("formSettingsBasicsGender");
 var jsSettingsBasicsSubmit = document.getElementById("formSettingsBasicsSubmit");
-var jsSettingsBasicsRegexPatternName = /^[a-zA-Z]{3,15}$/;
+var jsSettingsBasicsRegexPatternName = /^[a-zA-Z]{3,50}$/;
+var jsSettingsBasicsRegexPatternAge = /^[0-9]{1,2}$/;
 
 jsSettingsBasicsSubmit.disabled = true;
 jsSettingsBasicsSubmit.classList.remove("btn-info");
 jsSettingsBasicsSubmit.classList.add("btn-danger");
 
 
-
 function jsSettingsBasicsSubmitEnable() {
     if (jsSettingsBasicsRegexPatternName.test(jsSettingsBasicsFirstName.value) ||
         jsSettingsBasicsRegexPatternName.test(jsSettingsBasicsLastName.value) ||
-        jsSettingsBasicsRegexPatternName.test(jsSettingsBasicsNickName.value)) {
+        jsSettingsBasicsRegexPatternName.test(jsSettingsBasicsNickName.value) ||
+        jsSettingsBasicsRegexPatternName.test(jsSettingsBasicsTown.value) ||
+        jsSettingsBasicsRegexPatternAge.test(jsSettingsBasicsAge.value)) {
         jsSettingsBasicsSubmit.disabled = false;
         jsSettingsBasicsSubmit.classList.remove("btn-danger");
         jsSettingsBasicsSubmit.classList.add("btn-info");
@@ -27,10 +32,10 @@ function jsSettingsBasicsSubmitEnable() {
 
 function jsSettingsValidateName(elementId) {
     jsSettingsBasicsSubmitEnable();
-    var element =  document.getElementById(elementId);
+    var element = document.getElementById(elementId);
 
 
-    if(!jsSettingsBasicsRegexPatternName.test(element.value)) {
+    if (!jsSettingsBasicsRegexPatternName.test(element.value)) {
         if (!document.getElementById(elementId + "InvalidFeedback")) {
             element.classList.add("is-invalid");
             var newElement = document.createElement("div");
@@ -40,7 +45,7 @@ function jsSettingsValidateName(elementId) {
             newElement.appendChild(newElementContent);
             element.parentNode.insertBefore(newElement, element.nextSibling);
         }
-    }else{
+    } else {
         if (document.getElementById(elementId + "InvalidFeedback")) {
             document.getElementById(elementId + "InvalidFeedback").parentElement.removeChild(document.getElementById(elementId + "InvalidFeedback"));
         }
@@ -49,6 +54,33 @@ function jsSettingsValidateName(elementId) {
     }
 }
 
+function jsSettingsValidateSelect(elementId) {
+    jsSettingsBasicsSubmitEnable(elementId);
+}
+
+function jsSettingsValidateAge(elementId) {
+    jsSettingsBasicsSubmitEnable();
+    var element = document.getElementById(elementId);
+
+
+    if (!jsSettingsBasicsRegexPatternAge.test(element.value)) {
+        if (!document.getElementById(elementId + "InvalidFeedback")) {
+            element.classList.add("is-invalid");
+            var newElement = document.createElement("div");
+            newElement.setAttribute("id", elementId + "InvalidFeedback");
+            newElement.classList.add("invalid-feedback");
+            var newElementContent = document.createTextNode(jsShowInputFeedback(elementId));
+            newElement.appendChild(newElementContent);
+            element.parentNode.insertBefore(newElement, element.nextSibling);
+        }
+    } else {
+        if (document.getElementById(elementId + "InvalidFeedback")) {
+            document.getElementById(elementId + "InvalidFeedback").parentElement.removeChild(document.getElementById(elementId + "InvalidFeedback"));
+        }
+        element.classList.remove("is-invalid");
+        element.classList.add("is-valid");
+    }
+}
 
 function loadDoc() {
     var xhttp = new XMLHttpRequest();

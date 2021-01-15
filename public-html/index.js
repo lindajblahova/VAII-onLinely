@@ -9,23 +9,23 @@ var jsPasswordRegexPattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$#]).{8,16}/
 
 document.getElementById("formSignUpSubmit").disabled = true;
 document.getElementById("formSignUpSubmit").classList.remove("btn-info");
-document.getElementById("formSignUpSubmit").classList.add("btn-danger");
+document.getElementById("formSignUpSubmit").classList.add("btn-secondary");
 
 document.getElementById("formSignInSubmit").disabled = true;
-document.getElementById("formSignInSubmit").classList.remove("btn-info");
-document.getElementById("formSignInSubmit").classList.add("btn-danger");
+document.getElementById("formSignInSubmit").classList.remove("btn-warning");
+document.getElementById("formSignInSubmit").classList.add("btn-light");
 
 
 function jsSignUpSubmitEnable() {
     if (jsEmailRegexPattern.test(jsSignUpEmail.value) && jsPasswordRegexPattern.test(jsSignUpPassword.value) &&
         (jsSignUpPassword.value == jsSignUpPasswordConf.value)) {
         document.getElementById("formSignUpSubmit").disabled = false;
-        document.getElementById("formSignUpSubmit").classList.remove("btn-danger");
+        document.getElementById("formSignUpSubmit").classList.remove("btn-secondary");
         document.getElementById("formSignUpSubmit").classList.add("btn-info");
     }else{
         document.getElementById("formSignUpSubmit").disabled = true;
         document.getElementById("formSignUpSubmit").classList.remove("btn-info");
-        document.getElementById("formSignUpSubmit").classList.add("btn-danger");
+        document.getElementById("formSignUpSubmit").classList.add("btn-secondary");
 
     }
 }
@@ -33,12 +33,12 @@ function jsSignUpSubmitEnable() {
 function jsSignInSubmitEnable() {
     if (jsEmailRegexPattern.test(jsSignInEmail.value) && jsPasswordRegexPattern.test(jsSignInPassword.value)) {
         document.getElementById("formSignInSubmit").disabled = false;
-        document.getElementById("formSignInSubmit").classList.remove("btn-danger");
-        document.getElementById("formSignInSubmit").classList.add("btn-success");
+        document.getElementById("formSignInSubmit").classList.remove("btn-light");
+        document.getElementById("formSignInSubmit").classList.add("btn-warning");
     }else{
         document.getElementById("formSignInSubmit").disabled = true;
-        document.getElementById("formSignInSubmit").classList.remove("btn-success");
-        document.getElementById("formSignInSubmit").classList.add("btn-danger");
+        document.getElementById("formSignInSubmit").classList.remove("btn-warning");
+        document.getElementById("formSignInSubmit").classList.add("btn-light");
     }
 }
 

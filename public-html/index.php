@@ -15,24 +15,13 @@ require('system.controller.php'); ?>
 
     <link rel="stylesheet" href="CSS/onlinely.css">
 </head>
-<body>
-<div class="container">
-
-    <!-- SYSTEM-WIDE FEEDBACK -->
-    <?php if (isset($_SESSION["msgid"]) && $_SESSION["msgid"] != "" && phpShowSystemFeedback($_SESSION["msgid"])[0] != "") { ?>
-
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-<?php echo(phpShowSystemFeedback($_SESSION['msgid'])[0]); ?>" role="alert">
-                    <?php echo(phpShowSystemFeedback($_SESSION['msgid'])[1]); ?>
-                </div>
-            </div>
-        </div>
-
-    <?php } ?>
-    <!-- SYSTEM-WIDE FEEDBACK -->
+<body style="background-color: azure">
+<div class="container-fluid" >
     <div class="row sign-in-row">
-        <div class="col-lg-6"><h1>onLinely</h1></div>
+        <div class="col-lg-6">
+
+            <h1>onLinely</h1>
+        </div>
         <div class="col-lg-6">
             <form name="formSignIn" action="signin.controller.php" method="post" novalidate>
                 <div class="form-inline">
@@ -51,14 +40,27 @@ require('system.controller.php'); ?>
             </form>
         </div>
     </div>
+    <!-- SYSTEM-WIDE FEEDBACK -->
+    <?php if (isset($_SESSION["msgid"]) && $_SESSION["msgid"] != "" && phpShowSystemFeedback($_SESSION["msgid"])[0] != "") { ?>
 
-    <h4>Create a new account</h4>
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="alert alert-<?php echo(phpShowSystemFeedback($_SESSION['msgid'])[0]); ?>" role="alert">
+                    <?php echo(phpShowSystemFeedback($_SESSION['msgid'])[1]); ?>
+                </div>
+            </div>
+        </div>
+
+    <?php } ?>
+    <!-- SYSTEM-WIDE FEEDBACK -->
+
+    <h4 class="col-lg-6 my_text">Create a new account</h4>
     <hr>
 
     <div class="row">
-        <div class="col-lg-6">
-            <form name="formSignUp" action="signup.controller.php" method="post" novalidate>
-                <div class="form-group">
+        <div class="col-lg-6 mycontent-left" >
+            <form name="formSignUp" action="signup.controller.php" method="post" class="my_form_group" novalidate>
+                <div class="form-group" >
                     <label for="formSignUpEmail">Email address</label>
                     <input type="email" <?php echo(phpShowEmailInputValue($_SESSION['formSignUpEmail'])[0]); ?>
                            class="form-control <?php if ($_SESSION['msgid'] != "801" && $_SESSION['msgid'] != "") {
@@ -100,16 +102,14 @@ require('system.controller.php'); ?>
                         </div>
                     <?php } ?>
                 </div>
-                <button type="submit" id="formSignUpSubmit" class="btn btn-info">Sign Up</button>
+                <button type="submit" id="formSignUpSubmit" class="btn btn-info ">Sign Up</button>
             </form>
         </div>
 
         <div class="col-lg-6">
-            <p>Hello and welcome to onLinely! We are very happy that you want to join our great community!</p>
-            <p>Please, enter your email and password. Your must have access to your email because we will send
-                a confirmation code to that address. Your password must be between 8 and 16 characters long, with at
-                least one uppercase and one lowercase character, one number and one special character (@, *, $ or
-                #).</p>
+            <img src="IMG/index.gif" class="index_img" alt="Ideas">
+            <h5>Hello and welcome to onLinely! We are very happy that you want to join our great community!</h5>
+
             <p>We hope you'll enjoy onLinely!</p>
         </div>
     </div>

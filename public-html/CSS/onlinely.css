@@ -2,13 +2,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lightgrey;
+    background-color: #17a2b8;
     margin-bottom: 30px;
     padding: 10px 0 10px 0;
 }
 
+.logo {
+    width: 50px;
+    height: 30px;
+    margin-top: auto;
+}
+
+.card_margin {
+    margin-top: 25%;
+}
+
 h5 {
     margin-top: 1em;
+}
+
+h1 {
+    color: white;
 }
 
 hr {
@@ -28,6 +42,18 @@ hr {
     margin-top: 1.25rem;
 }
 
+.mycontent-left {
+    border-right: 1px solid #17a2b8;
+}
+
+.message_sender{
+    color: deepskyblue;
+}
+
+.message_new {
+    color: #01a31c;
+}
+
 .message_content {
     font-size: 1em;
     background-color: #e9ecef;
@@ -45,12 +71,30 @@ hr {
     margin-bottom: .25rem;
 }
 
+.my_form_group {
+    width: 50%;
+    margin: auto;
+}
+
+.my_button {
+    margin-right: 0px;
+}
+
+.my_text {
+    margin-left: 11% ;
+}
+
 .group_content {
     font-size: 1em;
     background-color: #e9ecef;
     border-top: 1px solid #e9ecef;
     padding: .5rem .75rem;
     margin-bottom: .25rem;
+}
+
+.index_img {
+    width: 200px;
+    height: 200px;
 }
 
 @media (max-width: 992px) {
@@ -61,7 +105,20 @@ hr {
     .float-right {
         float: left!important;
     }
+
+    .my_form_group {
+        width: 100%;
+    }
+
+    .my_text {
+        margin-left: auto;
+    }
+
+    .index_img {
+        display: none;
+    }
+    .card_margin {
+        margin-top: 0%;
+    }
+
 }
-
-
-

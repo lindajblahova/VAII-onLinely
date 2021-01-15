@@ -55,6 +55,36 @@ $db_data = "";
                 <?php } ?>
             </div>
 
+            <div class="form-group">
+                <label for="formSettingsBasicsAge">Age</label>
+                <input type="text" class="form-control <?php if ($_SESSION['msgid']!='204' && $_SESSION['msgid']!='')
+                { echo 'is-valid'; }else{ echo (phpShowInputFeedback($_SESSION['msgid'])[0]); } ?>"
+                       id="formSettingsBasicsAge" name="formSettingsBasicsAge"
+                       placeholder="Enter your Age" onkeyup="jsSettingsValidateAge('formSettingsBasicsAge')"
+                       value="<?php echo $dbUserRow['user_age'];?>">
+
+                <?php if ($_SESSION["msgid"]=="204") { ?>
+                    <div class="invalid-feedback">
+                        <?php echo (phpShowInputFeedback($_SESSION["msgid"])[1]); ?>
+                    </div>
+                <?php } ?>
+            </div>
+
+            <div class="form-group">
+                <label for="formSettingsBasicsTown">Town</label>
+                <input type="text" class="form-control <?php if ($_SESSION['msgid']!='205' && $_SESSION['msgid']!='')
+                { echo 'is-valid'; }else{ echo (phpShowInputFeedback($_SESSION['msgid'])[0]); } ?>"
+                       id="formSettingsBasicsTown" name="formSettingsBasicsTown"
+                       placeholder="Enter your town" onkeyup="jsSettingsValidateName('formSettingsBasicsTown')"
+                       value="<?php echo $dbUserRow['user_town'];?>">
+
+                <?php if ($_SESSION["msgid"]=="205") { ?>
+                    <div class="invalid-feedback">
+                        <?php echo (phpShowInputFeedback($_SESSION["msgid"])[1]); ?>
+                    </div>
+                <?php } ?>
+            </div>
+
             <button type="submit" id="formSettingsBasicsSubmit" name="formSettingsBasicsSubmit"
                     class="btn btn-primary btn-info">Save</button>
             <button type="submit" id="formSettingsBasicsClear" name="formSettingsBasicsClear"

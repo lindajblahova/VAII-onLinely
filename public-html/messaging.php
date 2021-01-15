@@ -71,7 +71,9 @@ if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
 
                 <?php foreach ($dbMessagesList as $dbMessageRow) { ?>
                     <tr>
-                        <td class="message_header">
+                        <td class="message_header<?php if ($dbMessageRow["message_sender_id"] == $_SESSION["uid"] )
+                            {?> message_sender <?php } if ($dbMessageRow["message_read_by_recipient"] == 0 &&
+                            $dbMessageRow["message_recipient_id"] == $_SESSION["uid"]) { ?> message_new <?php } ?> ">
                             <?php if ($dbMessageRow["message_sender_id"] == $_SESSION["uid"]) { ?>
                                 TO: <?php echo phpGetUserEmail($dbMessageRow["message_recipient_id"]); ?>
                             <?php }else{ ?>
@@ -93,6 +95,18 @@ if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
     </div>
 
     <script src="messaging.js"></script>
+
+    <form>
+        <select name="users" onchange="showUser(this.value)">
+            <option value="">Select a person:</option>
+            <option value="1">lindajblahova@gmail.com</option>
+            <option value="2">linda@blahova.com</option>
+            <option value="3">Joseph Swanson</option>
+            <option value="4">Glenn Quagmire</option>
+        </select>
+    </form>
+    <br>
+    <div id="txtHint"><b>Person info will be listed here...</b></div>
 
 <?php
     //UPDATE MESSAGES READ BY RECIPIENT

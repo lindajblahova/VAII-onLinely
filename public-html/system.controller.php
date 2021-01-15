@@ -78,17 +78,27 @@ function phpShowInputFeedback($feedback_id) {
     switch ($feedback_id) {
         case "201":
             $feedback_type="is-invalid";
-            $feedback_text="First name must be between 3 and 15 characters long and can contain only letters.";
+            $feedback_text="First name must be between 3 and 50 characters long and can contain only letters.";
             break;
 
         case "202":
             $feedback_type="is-invalid";
-            $feedback_text="Last name must be between 3 and 15 characters long and can contain only letters.";
+            $feedback_text="Last name must be between 3 and 50 characters long and can contain only letters.";
             break;
 
         case "203":
             $feedback_type="is-invalid";
-            $feedback_text="Nickname must be between 3 and 15 characters long and can contain only letters.";
+            $feedback_text="Nickname must be between 3 and 50 characters long and can contain only letters.";
+            break;
+
+        case "204":
+            $feedback_type="is-invalid";
+            $feedback_text="Age must be between 0 and 99.";
+            break;
+
+        case "205":
+            $feedback_type="is-invalid";
+            $feedback_text="Town must be between 3 and 50 characters long and can contain only letters.";
             break;
 
         case "301":

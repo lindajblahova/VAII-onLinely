@@ -22,7 +22,7 @@ $db_data = "";
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <a class="navbar-brand" href="#">onLinely</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -46,6 +46,7 @@ $db_data = "";
                 <a class="nav-link" href="gate.php?module=settings">Settings<?php if ($_GET['module']=='settings') { ?>
                         <span class="sr-only">(current)</span><?php } ?></a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="logout.controller.php">Logout</a>
             </li>
@@ -60,7 +61,7 @@ $db_data = "";
 
     <!-- SYSTEM-WIDE FEEDBACK -->
     <?php if (isset($_SESSION["msgid"]) && $_SESSION["msgid"]!="" && phpShowSystemFeedback($_SESSION["msgid"])[0]!="") { ?>
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-12">
                 <div class="alert alert-<?php echo (phpShowSystemFeedback($_SESSION['msgid'])[0]); ?>" role="alert">
                     <?php echo (phpShowSystemFeedback($_SESSION['msgid'])[1]); ?>
@@ -118,7 +119,12 @@ $db_data = "";
 
 <?php $_SESSION["msgid"]="";?>
 
-<script src="gate.js"></script>
+<script src="gate.js">
+    <!--not mine -->
+    $('.navbar-collapse a').click(function () {
+        $(".navbar-collapse").collapse('hide');
+    });
+</script>
 
 
 <!-- Optional Javascript -->
