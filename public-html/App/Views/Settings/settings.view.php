@@ -85,6 +85,21 @@ $db_data = "";
                 <?php } ?>
             </div>
 
+            <div class="form-group">
+                <label for="formSettingsBasicsHobbies">Hobbies</label>
+                <input type="text" class="form-control <?php if ($_SESSION['msgid']!='206' && $_SESSION['msgid']!='')
+                { echo 'is-valid'; }else{ echo (phpShowInputFeedback($_SESSION['msgid'])[0]); } ?>"
+                       id="formSettingsBasicsHobbies" name="formSettingsBasicsHobbies"
+                       placeholder="Enter your hobbies" onkeyup="jsSettingsValidateHobbies('formSettingsBasicsHobbies')"
+                       value="<?php echo $dbUserRow['user_hobbies'];?>">
+
+                <?php if ($_SESSION["msgid"]=="206") { ?>
+                    <div class="invalid-feedback">
+                        <?php echo (phpShowInputFeedback($_SESSION["msgid"])[1]); ?>
+                    </div>
+                <?php } ?>
+            </div>
+
             <button type="submit" id="formSettingsBasicsSubmit" name="formSettingsBasicsSubmit"
                     class="btn btn-primary btn-info">Save</button>
             <button type="submit" id="formSettingsBasicsClear" name="formSettingsBasicsClear"

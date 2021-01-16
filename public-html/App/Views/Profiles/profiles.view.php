@@ -41,6 +41,10 @@ $db_data = "";
             <img class="icon" src="../../../IMG/icon-town.png" alt="User's town">
             <?php echo $dbMyProfile["user_town"]; ?></p>
             <?php }?>
+        <p><?php if ($dbMyProfile["user_hobbies"] != "") { ?>
+            <img class="icon" src="../../../IMG/icon-hobbies.png" alt="User's town">
+            <?php echo $dbMyProfile["user_hobbies"]; ?></p>
+    <?php }?>
     </div>
 
     <div class="col-lg-6">
@@ -70,6 +74,10 @@ $db_data = "";
             <p><?php if ($dbProfileRow["user_town"] != "") { ?>
                 <img class="icon" src="../../../IMG/icon-town.png" alt="User's town">
                 <?php echo $dbProfileRow["user_town"]; ?></p>
+        <?php }?>
+            <p><?php if ($dbProfileRow["user_hobbies"] != "") { ?>
+                <img class="icon" src="../../../IMG/icon-nickname.png" alt="User's town">
+                <?php echo $dbProfileRow["user_hobbies"]; ?></p>
         <?php }?>
         </div>
 

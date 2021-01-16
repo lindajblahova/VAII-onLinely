@@ -29,6 +29,10 @@ function jsShowInputFeedback(elementId) {
             var feedbackMessage = "Town must be between 3 and 50 characters long and can contain only letters."
             break;
 
+        case "formSettingsBasicsHobbies":
+            var feedbackMessage = "Hobbies can not contain '<' and '>' characters."
+            break;
+
         case "formGroupName":
             var feedbackMessage = "Group name can not be empty and can not contain '<' and '>' characters."
             break;

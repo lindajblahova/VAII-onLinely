@@ -1,6 +1,6 @@
 <?php
 
-if ($_GET["gid"] != "" && (phpGetGroupOwnerID($_GET["gid"] == $_SESSION["uid"]))) {
+if (($_GET["gid"] != "") && (phpGetGroupOwnerID($_GET["gid"]) == $_SESSION["uid"])) {
 
     $groupHeading = "Edit group name";
     $hiddenField = '<input type="hidden" id="formPostsGroupID" name="formPostsGroupID" value="' . $_GET["gid"] . '">';
