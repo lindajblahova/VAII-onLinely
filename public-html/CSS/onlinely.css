@@ -115,6 +115,24 @@ hr {
     height: 200px;
 }
 
+ul {
+    list-style-type: none;
+}
+
+.my_link {
+    text-decoration: none;
+    color: #17a2b8;
+    alignment: right;
+
+}
+
+.my_link:hover{
+    text-decoration: none;
+    color: dimgray;
+    alignment: right;
+
+}
+
 @media (max-width: 992px) {
     .group_content {
         background-color: #ffffff;

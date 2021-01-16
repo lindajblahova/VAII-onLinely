@@ -26,17 +26,30 @@ require('../../system.controller.php'); ?>
             <form name="formSignIn" action="../../Controllers/Index/signin.controller.php" method="post" novalidate>
                 <div class="form-inline">
                     <label class="sr-only" for="formSignInEmail">Email</label>
-                    <input type="email" class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0" id="formSignInEmail"
+                    <input type="email"
+                           class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0 <?php echo(phpShowInputFeedback($_SESSION['msgid'])[0]); ?>"
+                              id="formSignInEmail"
                            name="formSignInEmail" placeholder="Email"
                            onkeyup="jsSignInValidateEmail()">
 
+
                     <label class="sr-only" for="formSignInPassword">Password</label>
-                    <input type="password" class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0"
+                    <input type="password" class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0 <?php echo(phpShowInputFeedback($_SESSION['msgid'])[0]); ?>"
                            id="formSignInPassword" name="formSignInPassword" placeholder="Password"
                            onkeyup="jsSignInValidatePassword()">
 
                     <button type="submit" id="formSignInSubmit" class="btn btn-primary btn-sm">Sign In</button>
                 </div>
+                <?php if ($_SESSION['msgid'] == "805") { ?>
+                    <div class="mt-2 text-warning">
+                        <?php echo(phpShowInputFeedback($_SESSION['msgid'])[1]); ?>
+                    </div>
+                <?php } ?>
+                <?php if ($_SESSION['msgid'] == "806") { ?>
+                    <div class="mt-2 text-warning">
+                        <?php echo(phpShowInputFeedback($_SESSION['msgid'])[1]); ?>
+                    </div>
+                <?php } ?>
             </form>
         </div>
     </div>

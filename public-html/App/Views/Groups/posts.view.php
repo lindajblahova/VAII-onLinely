@@ -43,6 +43,10 @@ $db_data = array($_GET["gid"]);
 $dbPostsList = phpFetchAllDB('SELECT * FROM posts WHERE post_group_id = ? ORDER BY post_date DESC', $db_data);
 $db_data = "";
 
+
+$db_data = array($_SESSION["uid"]);
+$dbUserIsAdmin = phpFetchDB('SELECT * FROM users WHERE user_id = ?', $db_data);
+$db_data = "";
 ?>
 
 <p><strong>Latest posts</strong></p>
@@ -60,7 +64,8 @@ $db_data = "";
                            onclick="showTextAreaByPostId('<?php echo $dbPostRow["post_id"];?>')">Edit</a>
                     <?php } ?>
 
-                    <?php if ($_SESSION["uid"] == $dbPostRow["post_author_id"] || $_SESSION["uid"] == phpGetGroupOwnerID($_GET["gid"])) { ?>
+                    <?php if (($_SESSION["uid"] == $dbPostRow["post_author_id"]) || ($_SESSION["uid"] == phpGetGroupOwnerID($_GET["gid"]))
+                         || ($dbUserIsAdmin["user_role"] == 0)) { ?>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletePostModal<?php echo $dbPostRow['post_id']; ?>">Delete</button>
                     <?php }?>
@@ -88,7 +93,8 @@ $db_data = "";
                     <input type="hidden" id="formPostsPostID" name="formPostsPostID" value="<?php echo $dbPostRow["post_id"];?>">
 
                     <!-- Display modal only if the current user is the author of the post or the owner of the group -->
-                    <?php if ($_SESSION["uid"] == $dbPostRow["post_author_id"] || $_SESSION["uid"] == phpGetGroupOwnerID($_GET["gid"])) { ?>
+                    <?php if (($_SESSION["uid"] == $dbPostRow["post_author_id"]) || ($_SESSION["uid"] == phpGetGroupOwnerID($_GET["gid"]))
+                        || ($dbUserIsAdmin["user_role"] == 0)) { ?>
 
                     <!-- Modal -->
                     <div class="modal fade" id="deletePostModal<?php echo $dbPostRow['post_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="deletePostModalLabel" aria-hidden="true">
@@ -112,6 +118,7 @@ $db_data = "";
                     </div>
                 <?php } ?>
 
+                </form>
                 </form>
                 <hr>
             <?php }?>

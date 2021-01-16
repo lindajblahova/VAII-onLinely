@@ -146,6 +146,11 @@ function phpShowInputFeedback($feedback_id) {
             $feedback_text="This email is not registered!";
             break;
 
+        case "806":
+            $feedback_type="is-invalid";
+            $feedback_text="The password is incorrect!";
+            break;
+
         default:
             $feedback_type="";
             $feedback_text="Unspecified error or warning";

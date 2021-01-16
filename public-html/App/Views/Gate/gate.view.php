@@ -53,7 +53,7 @@ $db_data = "";
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="../../logout.controller.php">Logout</a>
+                <a class="nav-link" href="../../Controllers/logout.controller.php">Logout</a>
             </li>
         </ul>
         <a class="nav-link-user" href="#"><?php if (isset($dbUserRow["user_email"])) {

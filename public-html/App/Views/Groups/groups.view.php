@@ -2,6 +2,10 @@
 $db_data = array();
 $dbGroupsList = phpFetchAllDB('SELECT * FROM groups', $db_data);
 $db_data = "";
+
+$db_data = array($_SESSION["uid"]);
+$dbUserIsAdmin = phpFetchDB('SELECT * FROM users WHERE user_id = ?', $db_data);
+$db_data = "";
 ?>
 
 
@@ -28,7 +32,7 @@ $db_data = "";
 
     <div class="group_content col-lg-6">
         <!-- Display modal only if the current user is the owner of the group -->
-        <?php if ($_SESSION["uid"] == $dbGroupRow["group_owner_id"]) { ?>
+        <?php if (($_SESSION["uid"] == $dbGroupRow["group_owner_id"]) || ($dbUserIsAdmin["user_role"] == 0)) { ?>
 
         <!-- Create a form -->
         <form action="../../Controllers/Groups/group.delete.controller.php" method="post" novalidate>

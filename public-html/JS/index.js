@@ -12,21 +12,22 @@ var jsSignInPasswordAdmin = document.getElementById("formSignInPasswordAdmin");
 var jsEmailRegexPattern = /^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$/;
 var jsPasswordRegexPattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$#]).{8,16}/;
 
-document.getElementById("formSignUpSubmit").disabled = true;
-document.getElementById("formSignUpSubmit").classList.remove("btn-info");
-document.getElementById("formSignUpSubmit").classList.add("btn-secondary");
+    document.getElementById("formSignUpSubmit").disabled = true;
+    document.getElementById("formSignUpSubmit").classList.remove("btn-info");
+    document.getElementById("formSignUpSubmit").classList.add("btn-secondary");
 
-document.getElementById("formSignInSubmit").disabled = true;
-document.getElementById("formSignInSubmit").classList.remove("btn-info");
-document.getElementById("formSignInSubmit").classList.add("btn-light");
+    document.getElementById("formSignInSubmit").disabled = true;
+    document.getElementById("formSignInSubmit").classList.remove("btn-info");
+    document.getElementById("formSignInSubmit").classList.add("btn-light");
 
-document.getElementById("formSignUpSubmitAdmin").disabled = true;
-document.getElementById("formSignUpSubmitAdmin").classList.remove("btn-info");
-document.getElementById("formSignUpSubmitAdmin").classList.add("btn-secondary");
 
-document.getElementById("formSignUpSubmitAdmin").disabled = true;
-document.getElementById("formSignUpSubmitAdmin").classList.remove("btn-warning");
-document.getElementById("formSignUpSubmitAdmin").classList.add("btn-light");
+    document.getElementById("formSignUpSubmitAdmin").disabled = true;
+    document.getElementById("formSignUpSubmitAdmin").classList.remove("btn-warning");
+    document.getElementById("formSignUpSubmitAdmin").classList.add("btn-secondary");
+
+    document.getElementById("formSignInSubmitAdmin").disabled = true;
+    document.getElementById("formSignInSubmitAdmin").classList.remove("btn-info");
+    document.getElementById("formSignInSubmitAdmin").classList.add("btn-light");
 
 
 function jsSignUpSubmitEnable() {
@@ -48,10 +49,10 @@ function jsSignUpSubmitEnableAdmin() {
         (jsSignUpPasswordAdmin.value == jsSignUpPasswordConfAdmin.value)) {
         document.getElementById("formSignUpSubmitAdmin").disabled = false;
         document.getElementById("formSignUpSubmitAdmin").classList.remove("btn-secondary");
-        document.getElementById("formSignUpSubmitAdmin").classList.add("btn-info");
+        document.getElementById("formSignUpSubmitAdmin").classList.add("btn-warning");
     }else{
         document.getElementById("formSignUpSubmitAdmin").disabled = true;
-        document.getElementById("formSignUpSubmitAdmin").classList.remove("btn-info");
+        document.getElementById("formSignUpSubmitAdmin").classList.remove("btn-warning");
         document.getElementById("formSignUpSubmitAdmin").classList.add("btn-secondary");
 
     }

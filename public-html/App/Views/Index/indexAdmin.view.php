@@ -1,5 +1,7 @@
 <?php session_start();
-require('../../system.controller.php'); ?>
+require('../../system.controller.php');
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,17 +28,30 @@ require('../../system.controller.php'); ?>
             <form name="formSignInAdmin" action="../../Controllers/Index/signin.controller.php" method="post" novalidate>
                 <div class="form-inline">
                     <label class="sr-only" for="formSignInEmailAdmin">Email</label>
-                    <input type="email" class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0" id="formSignInEmailAdmin"
+                    <input type="email"
+                           class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0 <?php echo(phpShowInputFeedback($_SESSION['msgid'])[0]); ?>"
+                           id="formSignInEmailAdmin"
                            name="formSignInEmailAdmin" placeholder="Email"
                            onkeyup="jsSignInValidateEmailAdmin()">
 
                     <label class="sr-only" for="formSignInPasswordAdmin">Password</label>
-                    <input type="password" class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0"
+                    <input type="password" class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0 <?php echo(phpShowInputFeedback($_SESSION['msgid'])[0]); ?>"
                            id="formSignInPasswordAdmin" name="formSignInPasswordAdmin" placeholder="Password"
                            onkeyup="jsSignInValidatePasswordAdmin()">
 
-                    <button type="submit" id="formSignInSubmitAdmin" class="btn btn-primary btn-sm">Sign In</button>
+                    <button type="submit" id="formSignInSubmitAdmin" class="btn btn-info btn-sm">Sign In</button>
                 </div>
+                <?php if ($_SESSION['msgid'] == "805") { ?>
+                    <div class="mt-2 text-info">
+                        <?php echo(phpShowInputFeedback($_SESSION['msgid'])[1]); ?>
+                    </div>
+                <?php } ?>
+
+                <?php if ($_SESSION['msgid'] == "806") { ?>
+                    <div class="mt-2 text-info">
+                        <?php echo(phpShowInputFeedback($_SESSION['msgid'])[1]); ?>
+                    </div>
+                <?php } ?>
             </form>
         </div>
     </div>
@@ -102,7 +117,7 @@ require('../../system.controller.php'); ?>
                         </div>
                     <?php } ?>
                 </div>
-                <button type="submit" id="formSignUpSubmitAdmin" class="btn btn-info ">Sign Up</button>
+                <button type="submit" id="formSignUpSubmitAdmin" class="btn btn-warning">Sign Up</button>
             </form>
         </div>
 
@@ -155,7 +170,9 @@ require('../../system.controller.php'); ?>
 $_SESSION["formSignUpEmailAdmin"] = ""
 ?>
 
-<script src="../../../JS/index.js"></script>
+<script src="../../../JS/index.js">
+    jsSignUpSubmitDisableAdmin();
+</script>
 
 
 <!-- Optional Javascript -->

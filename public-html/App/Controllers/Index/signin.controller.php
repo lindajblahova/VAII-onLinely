@@ -25,13 +25,13 @@ if ($email_validation && $password_validation) {//query the database only if ema
 
     if (!is_array($dbUserRow)) { //even regex compliant attempt can result in nonexistent record
         //echo "regex ok -> user does not exist -> wrong email or password -> feedback message";
-        $_SESSION["msgid"] = "";
+        $_SESSION["msgid"] = "805";
         header('Location: ../../Views/Index/index.view.php');
 
     } else if (!password_verify($user_password, $dbUserRow["user_password"])) { //user OK, password WRONG
 
        // echo "user ok, password wrong -> wrong email or password -> feedback message";
-        $_SESSION["msgid"] = "";
+        $_SESSION["msgid"] = "806";
         header('Location: ../../Views/Index/index.view.php');
 
     } else if (password_verify($user_password, $dbUserRow["user_password"]) ) { //user OK, password OK, activated
@@ -46,7 +46,7 @@ if ($email_validation && $password_validation) {//query the database only if ema
 
     //echo "not regex compliant -> wrong email or password -> feedback message";
     //$_SESSION["msgid"] = "";
-    //header('Location: index.view.php');
+    //header('Location: ../../Views/Index/index.view.php');
 }
 
 if ($email_admin_validation && $password_admin_validation) {//query the database only if ADMIN email and password are regex pattern compliant
@@ -58,14 +58,14 @@ if ($email_admin_validation && $password_admin_validation) {//query the database
 
     if (!is_array($dbAdminRow)) { //even regex compliant attempt can result in nonexistent record
         //echo "regex ok -> user does not exist -> wrong email or password -> feedback message";
-        $_SESSION["msgid"] = "";
-        header('Location: ../../Views/Index/index.view.php');
+        $_SESSION["msgid"] = "805";
+        header('Location: ../../Views/Index/indexAdmin.view.php');
 
     } else if (!password_verify($admin_password, $dbAdminRow["user_password"])) { //user OK, password WRONG
 
         // echo "user ok, password wrong -> wrong email or password -> feedback message";
-        $_SESSION["msgid"] = "";
-        header('Location: ../../Views/Index/index.view.php');
+        $_SESSION["msgid"] = "806";
+        header('Location: ../../Views/Index/indexAdmin.view.php');
 
     } else if (password_verify($admin_password, $dbAdminRow["user_password"]) ) { //user OK, password OK
 
@@ -75,11 +75,11 @@ if ($email_admin_validation && $password_admin_validation) {//query the database
     }
 
 
-} else { //not regex pattern compliant -> cannot be in the database, don't query the database, return feedback
+} else if ((!$email_admin_validation || !$password_admin_validation) && (!$email_validation && !$password_validation) ){ //not regex pattern compliant -> cannot be in the database, don't query the database, return feedback
 
     //echo "not regex compliant -> wrong email or password -> feedback message";
     //$_SESSION["msgid"] = "";
-    //header('Location: index.view.php');
+    header('Location: ../../Views/Index/indexAdmin.view.php');
 }
 
 ?>
