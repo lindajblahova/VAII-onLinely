@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('system.controller.php');
+require('../../system.controller.php');
 $db_data = array($_SESSION["uid"]);
 //fetching the row by email, fetch returns the first (and only) result entry
 $dbUserRow = phpFetchDB('SELECT * FROM users WHERE user_id = ?', $db_data);
@@ -18,7 +18,7 @@ $db_data = "";
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="CSS/onlinely.css">
+    <link rel="stylesheet" href="../../../CSS/onlinely.css">
 </head>
 <body>
 
@@ -30,30 +30,30 @@ $db_data = "";
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item <?php if ($_GET['module']=='home') {echo 'active'; } ?>">
-                <a class="nav-link" href="gate.php?module=home">Home<?php if ($_GET['module']=='home') { ?>
+                <a class="nav-link" href="gate.view.php?module=home">Home<?php if ($_GET['module']=='home') { ?>
                         <span class="sr-only">(current)</span><?php } ?></a>
             </li>
             <li class="nav-item <?php if ($_GET['module']=='messaging') {echo 'active'; } ?>">
-                <a class="nav-link" href="gate.php?module=messaging">Messaging<?php if ($_GET['module']=='messaging') { ?>
+                <a class="nav-link" href="gate.view.php?module=messaging">Messaging<?php if ($_GET['module']=='messaging') { ?>
                         <span class="sr-only">(current)</span><?php } ?></a>
             </li>
             <li class="nav-item <?php if ($_GET['module']=='groups') { echo 'active'; } ?>">
-                <a class="nav-link" href="gate.php?module=groups">Groups<?php if ($_GET['module']=='groups')
+                <a class="nav-link" href="gate.view.php?module=groups">Groups<?php if ($_GET['module']=='groups')
                 { ?><span class="sr-only"> (current)</span><?php } ?></a>
             </li>
 
             <li class="nav-item <?php if ($_GET['module']=='settings') {echo 'active'; } ?>">
-                <a class="nav-link" href="gate.php?module=settings">Settings<?php if ($_GET['module']=='settings') { ?>
+                <a class="nav-link" href="gate.view.php?module=settings">Settings<?php if ($_GET['module']=='settings') { ?>
                         <span class="sr-only">(current)</span><?php } ?></a>
             </li>
 
             <li class="nav-item <?php if ($_GET['module']=='profiles') {echo 'active'; } ?>">
-                <a class="nav-link" href="gate.php?module=profiles">Profiles<?php if ($_GET['module']=='settings') { ?>
+                <a class="nav-link" href="gate.view.php?module=profiles">Profiles<?php if ($_GET['module']=='settings') { ?>
                         <span class="sr-only">(current)</span><?php } ?></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="logout.controller.php">Logout</a>
+                <a class="nav-link" href="../../logout.controller.php">Logout</a>
             </li>
         </ul>
         <a class="nav-link-user" href="#"><?php if (isset($dbUserRow["user_email"])) {
@@ -89,31 +89,31 @@ $db_data = "";
     switch ($_GET["module"]) {
 
         case "home":
-            include('home.php');
+            include('../Home/home.view.php');
             break;
 
         case "settings":
-            include('settings.php');
+            include('../Settings/settings.view.php');
             break;
 
         case "messaging":
-            include('messaging.php');
+            include('../Messaging/messaging.view.php');
             break;
 
         case "group":
-            include('group.php');
+            include('../Groups/group.view.php');
             break;
 
         case "groups":
-            include('groups.php');
+            include('../Groups/groups.view.php');
             break;
 
         case "posts":
-            include('posts.php');
+            include('../Groups/posts.view.php');
             break;
 
         case "profiles":
-            include('profiles.php');
+            include('../Profiles/profiles.view.php');
             break;
 
         default:
@@ -128,7 +128,7 @@ $db_data = "";
 
 <?php $_SESSION["msgid"]="";?>
 
-<script src="gate.js">
+<script src="../../../JS/gate.js">
     <!--not mine -->
     $('.navbar-collapse a').click(function () {
         $(".navbar-collapse").collapse('hide');

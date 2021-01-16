@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('system.controller.php');
+require('../../system.controller.php');
 
 //BASICS FORM
 if(isset($_POST["formSettingsBasicsSubmit"])){
@@ -78,5 +78,5 @@ if(isset($_POST["formSettingsBasicsClear"])) {
     $_SESSION["msgid"] = "212";
 }
 
-header('Location: gate.php?module=settings');
+header('Location: ../../Views/Gate/gate.view.php?module=settings');
 ?>

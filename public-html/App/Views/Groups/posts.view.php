@@ -4,8 +4,7 @@
     </div>
     <div class="col-lg-6">
         <?php if (phpGetGroupOwnerID($_GET["gid"]) == $_SESSION["uid"]) { ?>
-        <a href="gate.php?module=group&gid=<?php echo $_GET["gid"]; ?>" class="btn btn-primary btn-sm float-right mt-3"
-        role="button">Settings</a>
+        <a href="../Gate/gate.view.php?module=group&gid=<?php echo $_GET["gid"]; ?>" class="btn btn-primary btn-sm float-right mt-3" role="button">Settings</a>
         <?php } ?>
     </div>
 </div>
@@ -14,7 +13,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form name="formPosts" action="posts.controller.php" method="post" novalidate>
+        <form name="formPosts" action="../../Controllers/Groups/posts.controller.php" method="post" novalidate>
 
             <div class="form-group">
                 <label for="formPostsContent">Create a new post</label>
@@ -22,8 +21,7 @@
                 { echo 'is-valid'; }else{ echo (phpShowInputFeedback($_SESSION['msgid'])[0]); } ?>"
                           id="formPostsContent" name="formPostsContent"
                           placeholder="Write the post here. Tags are not allowed."
-                          onkeyup="jsPostsValidateTextArea('formPostsContent')"><?php echo $_SESSION["posts_content"];
-                          ?></textarea>
+                          onkeyup="jsPostsValidateTextArea('formPostsContent')"><?php echo $_SESSION["posts_content"];?></textarea>
 
                 <?php if ($_SESSION["msgid"]=="501") { ?>
                     <div class="invalid-feedback">
@@ -76,7 +74,7 @@ $db_data = "";
                 <div id="databasePostsContent<?php echo $dbPostRow['post_id'];?>"
                      class="message_content"><?php echo $dbPostRow["post_content"]; ?></div>
 
-                <form action="posts.edit.controller.php" method="post" novalidate>
+                <form action="../../Controllers/Groups/posts.edit.controller.php" method="post" novalidate>
 
                     <div class="form-group form_posts_content">
                         <textarea class="form-control"
@@ -116,13 +114,13 @@ $db_data = "";
 
                 </form>
                 <hr>
-            <?php } ?>
+            <?php }?>
         </div>
 
 </div>
 
 
-<script src="posts.js"></script>
+<script src="../../../JS/posts.js"></script>
 
 <?php
 $_SESSION["posts_content"] = "";

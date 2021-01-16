@@ -77,7 +77,7 @@ function showUser(str) {
                 document.getElementById("txtHint").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","gate.php?module=messaging"+str,true);
+        xmlhttp.open("GET","gate.view.php?module=messaging"+str,true);
         xmlhttp.send();
     }
 }

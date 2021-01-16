@@ -1,5 +1,5 @@
 <?php session_start();
-require('system.controller.php'); ?>
+require('../../system.controller.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@ require('system.controller.php'); ?>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="CSS/onlinely.css">
+    <link rel="stylesheet" href="../../../CSS/onlinely.css">
 </head>
 <body style="background-color: azure">
 <div class="container-fluid" >
@@ -23,7 +23,7 @@ require('system.controller.php'); ?>
             <h1>onLinely</h1>
         </div>
         <div class="col-lg-6">
-            <form name="formSignIn" action="signin.controller.php" method="post" novalidate>
+            <form name="formSignIn" action="../../Controllers/Index/signin.controller.php" method="post" novalidate>
                 <div class="form-inline">
                     <label class="sr-only" for="formSignInEmail">Email</label>
                     <input type="email" class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0" id="formSignInEmail"
@@ -59,7 +59,7 @@ require('system.controller.php'); ?>
 
     <div class="row">
         <div class="col-lg-6 mycontent-left" >
-            <form name="formSignUp" action="signup.controller.php" method="post" class="my_form_group" novalidate>
+            <form name="formSignUp" action="../../Controllers/Index/signup.controller.php" method="post" class="my_form_group" novalidate>
                 <div class="form-group" >
                     <label for="formSignUpEmail">Email address</label>
                     <input type="email" <?php echo(phpShowEmailInputValue($_SESSION['formSignUpEmail'])[0]); ?>
@@ -107,7 +107,7 @@ require('system.controller.php'); ?>
         </div>
 
         <div class="col-lg-6">
-            <img src="IMG/index.gif" class="index_img" alt="Ideas">
+            <img src="../../../IMG/index.gif" class="index_img" alt="Ideas">
             <h5>Hello and welcome to onLinely! We are very happy that you want to join our great community!</h5>
 
             <p>We hope you'll enjoy onLinely!</p>
@@ -119,7 +119,7 @@ require('system.controller.php'); ?>
 $_SESSION["formSignUpEmail"] = ""
 ?>
 
-<script src="index.js"></script>
+<script src="../../../JS/index.js"></script>
 
 
 <!-- Optional Javascript -->

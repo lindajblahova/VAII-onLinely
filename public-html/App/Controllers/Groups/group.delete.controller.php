@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('system.controller.php');
+require('../../system.controller.php');
 
 if ($_POST["formGroupsDeleteButton"] == delete) {
 
@@ -16,5 +16,5 @@ if ($_POST["formGroupsDeleteButton"] == delete) {
 }
 
 //go to the list of groups
-header('Location: gate.php?module=groups');
+header('Location: ../../Views/Gate/gate.view.php?module=groups');
 ?>

@@ -1,6 +1,7 @@
 <?php
 session_start();
-require('system.controller.php');
+require('../../system.controller.php');
+
 
 $posts_content = $_POST["formPostsContent"];
 $posts_group_id = $_POST["formPostsGroupID"];
@@ -31,6 +32,6 @@ if ($posts_content_validation) {
 }
 
 
-header('Location: gate.php?module=posts&gid=' . $posts_group_id);
+header('Location: ../../Views/Gate/gate.view.php?module=posts&gid=' . $posts_group_id);
 
 ?>

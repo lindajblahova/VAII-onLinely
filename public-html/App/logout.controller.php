@@ -6,8 +6,8 @@ require('system.controller.php');
 if (isset($_SESSION["uid"]) && $_SESSION["uid"]!="") {
     //empty session uid
     $_SESSION["uid"]="";
-    header('Location: index.php');
+    header('Location: Views/Index/index.view.php');
 }else{
-    header('Location: index.php');
+    header('Location: Views/Index/index.view.php');
 }
 ?>

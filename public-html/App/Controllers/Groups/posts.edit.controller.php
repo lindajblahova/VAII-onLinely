@@ -1,6 +1,7 @@
 <?php
 session_start();
-require('system.controller.php');
+require('../../system.controller.php');
+
 
 $posts_id = $_POST["formPostsPostID"];
 $posts_content = $_POST["formPostsContentEdited" . $posts_id];
@@ -37,6 +38,6 @@ if ($_POST["formPostsDeleteButton"] == delete) {
 
 
 
-header('Location: gate.php?module=posts&gid=' . $posts_group_id);
+header('Location: ../../Views/Gate/gate.view.php?module=posts&gid=' . $posts_group_id);
 
 ?>

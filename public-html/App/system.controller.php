@@ -1,5 +1,5 @@
 <?php
-require ('db-connection.inc.php');
+require('Configuration/db-connection.inc.php');
 /// DAJ TO DO KONTAJNERA !! (ROW)
 function phpShowSystemFeedback($feedback_id) {
     switch ($feedback_id) {

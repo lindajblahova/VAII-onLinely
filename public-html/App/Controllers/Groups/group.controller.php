@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('system.controller.php');
+require('../../system.controller.php');
 
 $group_name = $_POST["formGroupName"];
 $group_name_pattern = "~^[^<>]{1,}$~";
@@ -21,7 +21,7 @@ if ($group_name_validation) {
 		//system feedback - group name has been changed
 		$_SESSION["msgid"] = "412";
 		//go to the list of posts
-		header('Location: gate.php?module=posts&gid=' . $_POST["formPostsGroupID"]);
+		header('Location: ../../Views/Gate/gate.view.php?module=posts&gid=' . $_POST["formPostsGroupID"]);
 
     } else {
 
@@ -33,7 +33,7 @@ if ($group_name_validation) {
         //system feedback - your group has been created
         $_SESSION["msgid"] = "411";
         //go to the list of groups
-        header('Location: gate.php?module=groups');
+        header('Location: ../../Views/Gate/gate.view.php?module=groups');
     }
 
 }else{
@@ -44,10 +44,10 @@ if ($group_name_validation) {
 
     if ($_POST["formPostsGroupID"] != "") {
         //go to the group - editing mode
-        header('Location: gate.php?module=group&gid=' . $_POST["formPostsGroupID"]);
+        header('Location: ../../Views/Gate/gate.view.php?module=group&gid=' . $_POST["formPostsGroupID"]);
     } else {
         //go to the group - creating mode
-        header('Location: gate.php?module=group');
+        header('Location: ../../Views/Gate/gate.view.php?module=group');
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('system.controller.php');
+require('../../system.controller.php');
 
 
 $messaging_recipient = $_POST["formMessagingRecipient"];
@@ -34,7 +34,7 @@ if ($messaging_recipient != "default" && $messaging_content_validation) {
     }
 }
 
-header('Location: gate.php?module=messaging');
+header('Location: ../../Views/Gate/gate.view.php?module=messaging');
 
 
 ?>

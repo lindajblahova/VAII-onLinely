@@ -12,7 +12,7 @@ if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
 
     <div class="row">
         <div class="col-lg-12">
-            <form name="formMessaging" action="messaging.controller.php" method="post" novalidate>
+            <form name="formMessaging" action="../../Controllers/Messaging/messaging.controller.php" method="post" novalidate>
                 <div class="form-group">
                     <label for="formMessagingRecipient">Recipient</label>
                     <select class="form-control <?php if ($_SESSION['msgid']!='301' && $_SESSION['msgid']!='')
@@ -94,7 +94,7 @@ if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
         </div>
     </div>
 
-    <script src="messaging.js"></script>
+    <script src="../../../JS/messaging.js"></script>
 
     <form>
         <select name="users" onchange="showUser(this.value)">

@@ -1,7 +1,8 @@
 <?php
 
     session_start();
-    require ('system.controller.php');
+require('../../system.controller.php');
+
     //echo $_POST["formSignUpEmail"];
     //echo $_POST["formSignUpPassword"];
     //echo $_POST["formSignUpPasswordConf"];
@@ -34,19 +35,19 @@ if ($email_validation && $password_validation && $user_password == $_POST["formS
     } else {
         $_SESSION["msgid"] = "804";
     }
-    header('Location: index.php');
+    header('Location: ../../Views/Index/index.view.php');
 } else if (!$email_validation) {
     $_SESSION["msgid"] = "801";
     $_SESSION["formSignUpEmail"] = $user_email;
-    header('Location: index.php');
+    header('Location: ../../Views/Index/index.view.php');
 } else if (!$password_validation) {
     $_SESSION["msgid"] = "802";
     $_SESSION["formSignUpEmail"] = $user_email;
-    header('Location: index.php');
+    header('Location: ../../Views/Index/index.view.php');
 } else if ($user_password != $_POST["formSignUpPasswordConf"]) {
     $_SESSION["msgid"] = "803";
     $_SESSION["formSignUpEmail"] = $user_email;
-    header('Location: index.php');
+    header('Location: ../../Views/Index/index.view.php');
 }
 
 

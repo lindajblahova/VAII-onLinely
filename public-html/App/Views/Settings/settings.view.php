@@ -9,7 +9,7 @@ $db_data = "";
 
 <div class="row">
     <div class="col-lg-12">
-        <form name="formSettingsBasics" action="settings.controller.php" method="post" novalidate>
+        <form name="formSettingsBasics" action="../../Controllers/Settings/settings.controller.php" method="post" novalidate>
             <div class="form-group">
                 <label for="formSettingsBasicsFirstName">First name</label>
                 <input type="text" class="form-control <?php if ($_SESSION['msgid']!='201' && $_SESSION['msgid']!='')
@@ -98,4 +98,4 @@ $db_data = "";
     <button type="button" onclick="loadDoc()">Change Content</button>
 </div>
 
-<script src="settings.js"></script>
+<script src="../../../JS/settings.js"></script>

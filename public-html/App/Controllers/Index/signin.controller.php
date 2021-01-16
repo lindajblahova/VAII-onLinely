@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('system.controller.php');
+require('../../system.controller.php');
 
 $user_email = $_POST["formSignInEmail"];
 $user_email_pattern = "~^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$~";
@@ -22,19 +22,19 @@ if ($email_validation && $password_validation) { //query the database only if em
     if (!is_array($dbUserRow)) { //even regex compliant attempt can result in nonexistent record
         //echo "regex ok -> user does not exist -> wrong email or password -> feedback message";
         $_SESSION["msgid"] = "";
-        header('Location: index.php');
+        header('Location: ../../Views/Index/index.view.php');
 
     } else if (!password_verify($user_password, $dbUserRow["user_password"])) { //user OK, password WRONG
 
        // echo "user ok, password wrong -> wrong email or password -> feedback message";
         $_SESSION["msgid"] = "";
-        header('Location: index.php');
+        header('Location: ../../Views/Index/index.view.php');
 
     } else if (password_verify($user_password, $dbUserRow["user_password"]) ) { //user OK, password OK, activated
 
         //echo "user ok, password ok -> allow user in the system -> feedback message";
         $_SESSION["uid"] = $dbUserRow["user_id"];
-        header('Location: gate.php?module=home');
+        header('Location: ../../Views/Gate/gate.view.php?module=home');
     }
 
 
@@ -42,7 +42,7 @@ if ($email_validation && $password_validation) { //query the database only if em
 
     //echo "not regex compliant -> wrong email or password -> feedback message";
     //$_SESSION["msgid"] = "";
-    //header('Location: index.php');
+    //header('Location: index.view.php');
 }
 
 ?>

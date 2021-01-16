@@ -23,7 +23,7 @@ if ($_GET["gid"] != "" && (phpGetGroupOwnerID($_GET["gid"] == $_SESSION["uid"]))
 
 <div class="row">
     <div class="col-lg-12">
-        <form name="formGroup" action="group.controller.php" method="post" novalidate>
+        <form name="formGroup" action="../../Controllers/Groups/group.controller.php" method="post" novalidate>
             <div class="form-group">
                 <label for="formGroupName">Group name</label>
                 <input type="text" class="form-control <?php if ($_SESSION['msgid']!='401' && $_SESSION['msgid']!='')
@@ -42,7 +42,7 @@ if ($_GET["gid"] != "" && (phpGetGroupOwnerID($_GET["gid"] == $_SESSION["uid"]))
     </div>
 </div>
 
-<script src="group.js"></script>
+<script src="../../../JS/group.js"></script>
 
 <?php
 $_SESSION['group_name'] = "";

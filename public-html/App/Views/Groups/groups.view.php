@@ -10,7 +10,7 @@ $db_data = "";
         <h5>Groups</h5>
     </div>
     <div class="col-lg-6">
-        <a href="gate.php?module=group" class="btn btn-success float-right mt-2" role="button">Create new group</a>
+        <a href="../Gate/gate.view.php?module=group" class="btn btn-success float-right mt-2" role="button">Create new group</a>
     </div>
 </div>
 <hr>
@@ -21,7 +21,7 @@ $db_data = "";
             <?php foreach ($dbGroupsList as $dbGroupRow) { ?>
 
                     <div class="group_content col-lg-6">
-                        <a href="gate.php?module=posts&gid=<?php echo $dbGroupRow['group_id']; ?>">
+                        <a href="../Gate/gate.view.php?module=posts&gid=<?php echo $dbGroupRow['group_id']; ?>">
                         <?php echo $dbGroupRow["group_name"]; ?>
                         </a>
                     </div>
@@ -31,7 +31,7 @@ $db_data = "";
         <?php if ($_SESSION["uid"] == $dbGroupRow["group_owner_id"]) { ?>
 
         <!-- Create a form -->
-        <form action="group.delete.controller.php" method="post" novalidate>
+        <form action="../../Controllers/Groups/group.delete.controller.php" method="post" novalidate>
             <input type="hidden" id="formGroupsGroupID" name="formGroupsGroupID" value="<?php echo $dbGroupRow["group_id"]; ?>">
 
             <!-- Button trigger modal -->
