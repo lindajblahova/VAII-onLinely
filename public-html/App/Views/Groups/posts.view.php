@@ -53,10 +53,10 @@ $db_data = "";
 <hr>
 
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-8" style="margin: auto;">
 
             <?php foreach ($dbPostsList as $dbPostRow) { ?>
-                <div class="float-right">
+                <div class="my_button_float_right">
                     <?php if ($dbPostRow["post_author_id"] == $_SESSION["uid"]) { ?>
                         <a href="#formPostsContentEdited<?php echo $dbPostRow['post_id'];?>" class="btn btn-primary
                              btn-sm"

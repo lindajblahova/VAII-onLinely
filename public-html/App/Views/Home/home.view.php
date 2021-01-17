@@ -25,11 +25,11 @@ $db_data = "";
 <hr>
 
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-8" style="margin: auto">
 
         <?php foreach ($dbPostsList as $dbPostRow) { ?>
 
-            <div class="message_header mt-2 mb-5" style="clear: both">
+            <div class="message_header smaller_margin" style="clear: both">
                 <h5 style="float: left"><?php echo phpGetUserEmail($dbPostRow["post_author_id"]); ?>
                 </h5>
                 <h5 style="float: right"> <?php echo phpGetGroupName($dbPostRow["post_group_id"]); ?> |

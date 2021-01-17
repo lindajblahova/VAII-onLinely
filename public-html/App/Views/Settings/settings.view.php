@@ -8,7 +8,7 @@ $db_data = "";
 <hr>
 
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-8" style="margin: auto">
         <form name="formSettingsBasics" action="../../Controllers/Settings/settings.controller.php" method="post" novalidate>
             <div class="form-group">
                 <label for="formSettingsBasicsFirstName">First name</label>
@@ -106,11 +106,6 @@ $db_data = "";
                     class="btn btn-primary btn-info">Clear</button>
         </form>
     </div>
-</div>
-
-<div id="demo">
-    <h2>Let AJAX change this text</h2>
-    <button type="button" onclick="loadDoc()">Change Content</button>
 </div>
 
 <script src="../../../JS/settings.js"></script>

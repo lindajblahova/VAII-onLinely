@@ -39,6 +39,10 @@ h1 {
     color: white;
 }
 
+h4 {
+    font-size: large;
+}
+
 hr {
     margin-top: 0.5em;
 }
@@ -133,6 +137,24 @@ ul {
 
 }
 
+.my_button_float_right {
+    float: right;
+}
+
+.jumbotron {
+    size: auto;
+}
+
+.smaller_margin {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
 @media (max-width: 992px) {
     .group_content {
         background-color: #ffffff;
@@ -157,4 +179,62 @@ ul {
         margin-top: 0%;
     }
 
+    .display-4 {
+        font-size: 40px;
+    }
+
+    h4 {
+        font-size: medium;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    h5 {
+        font-size: medium;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+
+    .smaller_margin {
+        margin-top: 0px;
+        margin-bottom: 25px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: xx-large;
+    }
+    h4 {
+        font-size: small;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    h5 {
+        font-size: small;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .display-4 {
+        font-size: x-large;
+        font-weight: bold;
+    }
+
+    h4 {
+        font-size: x-small;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    h5 {
+        font-size: x-small;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
 }
