@@ -20,7 +20,7 @@ if ($email_validation && $password_validation) {//query the database only if ema
 
     $db_data = array($user_email);
     //fetching the row by email, fetch returns the first (and only) result entry
-    $dbUserRow = phpFetchDB('SELECT * FROM users WHERE user_email = ?', $db_data);
+    $dbUserRow = phpFetchDB('SELECT * FROM user WHERE user_email = ?', $db_data);
     $db_data = "";
 
     if (!is_array($dbUserRow)) { //even regex compliant attempt can result in nonexistent record
@@ -53,7 +53,7 @@ if ($email_admin_validation && $password_admin_validation) {//query the database
 
     $db_data = array($admin_email);
     //fetching the row by email, fetch returns the first (and only) result entry
-    $dbAdminRow = phpFetchDB('SELECT * FROM users WHERE user_email = ?', $db_data);
+    $dbAdminRow = phpFetchDB('SELECT * FROM user WHERE user_email = ?', $db_data);
     $db_data = "";
 
     if (!is_array($dbAdminRow)) { //even regex compliant attempt can result in nonexistent record

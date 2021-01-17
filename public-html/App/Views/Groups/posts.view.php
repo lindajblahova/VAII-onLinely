@@ -45,7 +45,7 @@ $db_data = "";
 
 
 $db_data = array($_SESSION["uid"]);
-$dbUserIsAdmin = phpFetchDB('SELECT * FROM users WHERE user_id = ?', $db_data);
+$dbUserIsAdmin = phpFetchDB('SELECT * FROM user WHERE user_id = ?', $db_data);
 $db_data = "";
 ?>
 

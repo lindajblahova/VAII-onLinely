@@ -25,7 +25,7 @@ if(isset($_POST["formSettingsBasicsSubmit"])) {
     if ($firstname_validation || $lastname_validation || $nickname_validation || $town_validation || $age_validation || $hobbies_validation) {
         //get the current values from the database and store them so we can potentially save them back if some value is actually empty
         $db_data = array($_SESSION["uid"]);
-        $dbUserRow = phpFetchDB('SELECT * FROM users WHERE user_id = ?', $db_data);
+        $dbUserRow = phpFetchDB('SELECT * FROM user WHERE user_id = ?', $db_data);
         $db_data = "";
 
         //check each of the three inputs validation, if not valid, assign the db value instead
@@ -50,7 +50,7 @@ if(isset($_POST["formSettingsBasicsSubmit"])) {
 
         //update the database row
         $db_data = array($user_firstname, $user_lastname, $user_nickname, $user_age, $user_town, $user_hobbies, $_SESSION["uid"]);
-        phpModifyDB('UPDATE users SET user_firstname = ?, user_lastname = ?, user_nickname = ?, 
+        phpModifyDB('UPDATE user SET user_firstname = ?, user_lastname = ?, user_nickname = ?, 
         user_age = ?, user_town = ?, user_hobbies = ? WHERE user_id = ?', $db_data);
         $db_data = "";
 
@@ -78,7 +78,7 @@ if(isset($_POST["formSettingsBasicsSubmit"])) {
 if(isset($_POST["formSettingsBasicsClear"])) {
     //update the database row by setting empty strings
     $db_data = array("", "", "", NULL, "", "", $_SESSION["uid"]);
-    phpModifyDB('UPDATE users SET user_firstname = ?, user_lastname = ?, user_nickname = ?, 
+    phpModifyDB('UPDATE user SET user_firstname = ?, user_lastname = ?, user_nickname = ?, 
         user_age = ?, user_town = ?, user_hobbies = ? WHERE user_id = ?', $db_data);
     $db_data = "";
 

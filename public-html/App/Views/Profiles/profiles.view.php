@@ -1,11 +1,11 @@
 <?php
 session_start();
 $db_data = array($_SESSION["uid"]);
-$dbProfilesList = phpFetchAllDB('SELECT * FROM users WHERE user_id NOT LIKE ? ORDER BY user_email ASC', $db_data);
+$dbProfilesList = phpFetchAllDB('SELECT * FROM user WHERE user_id NOT LIKE ? ORDER BY user_email ASC', $db_data);
 $db_data = "";
 
 $db_data = array($_SESSION["uid"]);
-$dbMyProfile = phpFetchDB('SELECT * FROM users WHERE user_id LIKE ?', $db_data);
+$dbMyProfile = phpFetchDB('SELECT * FROM user WHERE user_id LIKE ?', $db_data);
 $db_data = "";
 ?>
 
@@ -100,6 +100,7 @@ $db_data = "";
     <?php } ?>
 
 </div>
+
 
 
 <script src="../../../JS/profiles.js"></script>

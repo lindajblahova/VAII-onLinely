@@ -1,11 +1,18 @@
 <?php
-
+session_start();
 if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
 
-    $db_data = array();     // array of arrays
-    $dbRecipientsList = phpFetchAllDB('SELECT * FROM users', $db_data);
+    $db_data = array();
+    $dbRecipientsList = phpFetchAllDB('SELECT * FROM user ORDER BY user_email', $db_data);
     $db_data = "";
-?>
+
+   $db_data = array($_SESSION["uid"], $_SESSION["uid"]);
+    $dbMessagesList = phpFetchAllDB('SELECT * FROM messages WHERE message_sender_id = ? OR message_recipient_id = ?
+    ORDER BY message_date DESC', $db_data);
+    $db_data = "";
+
+    ?>
+
 
     <h5>Messaging</h5>
     <hr>
@@ -55,24 +62,50 @@ if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
         </div>
     </div>
 
-    <?php
-    $db_data = array($_SESSION["uid"],$_SESSION["uid"]);
-    $dbMessagesList = phpFetchAllDB('SELECT * FROM messages WHERE message_sender_id = ? OR message_recipient_id = ?
-    ORDER BY message_date DESC', $db_data);
-    $db_data = "";
-    ?>
+    <div>
+        <script>
+            function showUser(str) {
+                if (str=="") {
+                    document.getElementById("txtHint").innerHTML="Select at least one user!";
+                    return;
+                }
+                var xmlhttp=new XMLHttpRequest();
+                xmlhttp.onreadystatechange=function() {
+                    if (this.readyState==4 && this.status==200) {
+                        document.getElementById("txtHint").innerHTML=this.responseText;
+                    }
+                }
+                xmlhttp.open("GET","getuser.php?q="+str,true);
+                xmlhttp.send();
+            }
+        </script>
+    </div>
+    <div>
 
-    <p><strong>Latest messages</strong></p>
-
-
+        <form>
+        <select  class="form-control col-lg-4" name="users" onchange="showUser(this.value)" data-live-search="true">
+            <option value="" disabled>Select a person</option>
+            <option value="<?php echo $_SESSION["uid"] ?>" style="color: #e2b709; font-weight: bold">Show all</option>
+            <?php foreach ($dbRecipientsList as $dbRecipientRow) {
+                if ($dbRecipientRow["user_id"] != $_SESSION["uid"]) {?>
+                <option value="<?php echo $dbRecipientRow["user_id"]; ?>"
+                    <?php if  ($_SESSION['messaging_recipient'] != '' &&
+                        $_SESSION['messaging_recipient'] == $dbRecipientRow["user_id"])
+                    { echo 'selected'; } ?>>
+                    <?php echo $dbRecipientRow["user_email"]; ?></option>
+            <? }
+            } ?>
+        </select>
+    </form>
+    <br>
     <div class="row">
         <div class="col-lg-12">
-            <table class="table">
+            <table class="table" id="txtHint">
 
                 <?php foreach ($dbMessagesList as $dbMessageRow) { ?>
                     <tr>
                         <td class="message_header<?php if ($dbMessageRow["message_sender_id"] == $_SESSION["uid"] )
-                            {?> message_sender <?php } if ($dbMessageRow["message_read_by_recipient"] == 0 &&
+                        {?> message_sender <?php } if ($dbMessageRow["message_read_by_recipient"] == 0 &&
                             $dbMessageRow["message_recipient_id"] == $_SESSION["uid"]) { ?> message_new <?php } ?> ">
                             <?php if ($dbMessageRow["message_sender_id"] == $_SESSION["uid"]) { ?>
                                 TO: <?php echo phpGetUserEmail($dbMessageRow["message_recipient_id"]); ?>
@@ -92,29 +125,18 @@ if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
 
             </table>
         </div>
+    </div></b></div>
+
     </div>
+
 
     <script src="../../../JS/messaging.js"></script>
 
-    <form>
-        <select name="users" onchange="showUser(this.value)">
-            <option value="">Select a person:</option>
-            <option value="1">lindajblahova@gmail.com</option>
-            <option value="2">linda@blahova.com</option>
-            <option value="3">Joseph Swanson</option>
-            <option value="4">Glenn Quagmire</option>
-        </select>
-    </form>
-    <br>
-    <div id="txtHint"><b>Person info will be listed here...</b></div>
-
-<?php
+    <?php
     //UPDATE MESSAGES READ BY RECIPIENT
     $db_data = array($_SESSION["uid"]);
     phpModifyDB('UPDATE messages SET message_read_by_recipient = 1 WHERE message_recipient_id = ?', $db_data);
     $db_date = "";
-
-
-    $_SESSION["messaging_recipient"] = "";
 }
 ?>
+

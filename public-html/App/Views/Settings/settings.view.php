@@ -1,6 +1,6 @@
 <?php
 $db_data = array($_SESSION["uid"]);
-$dbUserRow = phpFetchDB('SELECT * FROM users WHERE user_id = ?', $db_data);
+$dbUserRow = phpFetchDB('SELECT * FROM user WHERE user_id = ?', $db_data);
 $db_data = "";
 ?>
 
