@@ -16,7 +16,7 @@ require('../../model.php'); ?>
     <link rel="stylesheet" href="../../../CSS/onlinely.css">
 </head>
 <body style="background-color: azure">
-<div class="container-fluid" >
+<div class="container-fluid">
     <div class="row sign-in-row">
         <div class="col-lg-6">
 
@@ -27,18 +27,27 @@ require('../../model.php'); ?>
                 <div class="form-inline">
                     <label class="sr-only" for="formSignInEmail">Email</label>
                     <input type="email"
-                           class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0 <?php echo(phpShowInputFeedback($_SESSION['msgid'])[0]); ?>"
-                              id="formSignInEmail"
+                           class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0  <?php if ($_SESSION['msgid'] != "805" && $_SESSION['msgid'] != "") {
+                               echo 'is-valid';
+                           } else {
+                               echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
+                           } ?>""
+                           id="formSignInEmail"
                            name="formSignInEmail" placeholder="Email"
                            onkeyup="jsSignInValidateEmail()">
 
 
                     <label class="sr-only" for="formSignInPassword">Password</label>
-                    <input type="password" class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0 <?php echo(phpShowInputFeedback($_SESSION['msgid'])[0]); ?>"
+                    <input type="password"
+                           class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0  <?php if ($_SESSION['msgid'] != "806" && $_SESSION['msgid'] != "") {
+                               echo 'is-valid';
+                           } else {
+                               echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
+                           } ?>""
                            id="formSignInPassword" name="formSignInPassword" placeholder="Password"
                            onkeyup="jsSignInValidatePassword()">
 
-                    <button type="submit" id="formSignInSubmit" class="btn btn-primary btn-sm">Sign In</button>
+                    <button type="submit" id="formSignInSubmit" class="btn btn-warning btn-sm">Sign In</button>
                 </div>
                 <?php if ($_SESSION['msgid'] == "805") { ?>
                     <div class="mt-2 text-warning">
@@ -50,6 +59,7 @@ require('../../model.php'); ?>
                         <?php echo(phpShowInputFeedback($_SESSION['msgid'])[1]); ?>
                     </div>
                 <?php } ?>
+
             </form>
         </div>
     </div>
@@ -63,7 +73,6 @@ require('../../model.php'); ?>
                 </div>
             </div>
         </div>
-
     <?php } ?>
     <!-- SYSTEM-WIDE FEEDBACK -->
 
@@ -71,9 +80,10 @@ require('../../model.php'); ?>
     <hr>
 
     <div class="row">
-        <div class="col-lg-6 mycontent-left" >
-            <form name="formSignUp" action="../../Controllers/Index/signup.controller.php" method="post" class="my_form_group" novalidate>
-                <div class="form-group" >
+        <div class="col-lg-6 mycontent-left">
+            <form name="formSignUp" action="../../Controllers/Index/signup.controller.php" method="post"
+                  class="my_form_group" novalidate>
+                <div class="form-group">
                     <label for="formSignUpEmail">Email address</label>
                     <input type="email" <?php echo(phpShowEmailInputValue($_SESSION['formSignUpEmail'])[0]); ?>
                            class="form-control <?php if ($_SESSION['msgid'] != "801" && $_SESSION['msgid'] != "") {
@@ -83,7 +93,7 @@ require('../../model.php'); ?>
                            } ?>"
                            id="formSignUpEmail" placeholder="Enter your email address"
                            name="formSignUpEmail"
-                            onkeyup="jsSignUpValidateEmail()">
+                           onkeyup="jsSignUpValidateEmail()">
                     <?php if ($_SESSION['msgid'] == "801") { ?>
                         <div class="invalid-feedback">
                             <?php echo(phpShowInputFeedback($_SESSION['msgid'])[1]); ?>
@@ -135,7 +145,8 @@ require('../../model.php'); ?>
                 <div class="card-header">Groups&Posts</div>
                 <div class="card-body text-white">
                     <h5 class="card-title">Create a group and add some posts</h5>
-                    <p class="card-text">In Groups, you can create your group where you can share some posts with other people, as well as in other existing group. </p>
+                    <p class="card-text">In Groups, you can create your group where you can share some posts with other
+                        people, as well as in other existing group. </p>
                     <p></p>
                 </div>
             </div>
@@ -145,17 +156,19 @@ require('../../model.php'); ?>
                 <div class="card-header">Messaging</div>
                 <div class="card-body text-secondary">
                     <h5 class="card-title">Send and recieve private messages</h5>
-                    <p class="card-text">Use the email-like communication to communicate via private messages with users from all around the world. Make some new friends!</p>
+                    <p class="card-text">Use the email-like communication to communicate via private messages with users
+                        from all around the world.</p>
                     <p></p>
                 </div>
             </div>
         </div>
         <div class="col-lg-4">
-            <div class="card bg-info card_margin mb-4" >
+            <div class="card bg-info card_margin mb-4">
                 <div class="card-header">Settings&Profiles</div>
                 <div class="card-body text-white">
                     <h5 class="card-title">Update your profile, and check others' too</h5>
-                    <p class="card-text">Add information such as your age to your profile in the settings. See others' profile to find out what you have in common!</p>
+                    <p class="card-text">Add information such as your age to your profile in the settings. See others'
+                        profile to find out what you have in common!</p>
                     <p></p>
                 </div>
             </div>
@@ -171,8 +184,6 @@ $_SESSION["formSignUpEmail"] = ""
 <script src="../../../JS/index.js"></script>
 
 
-<!-- Optional Javascript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

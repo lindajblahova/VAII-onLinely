@@ -2,16 +2,17 @@
 session_start();
 require('../../model.php');
 
-if ($_POST["formGroupsDeleteButton"] == delete) {
+   if ($_POST["formGroupsDeleteButton"] == delete) {
 
-    //delete all posts assigned to the group, delete the group
-    phpDeleteGroup($_POST["formGroupsGroupID"]);
+      //delete all posts assigned to the group, delete the group
+      phpDeleteGroup($_POST["formGroupsGroupID"]);
+      echo $_GET['gid'];
+      //system feedback - group has been deleted
+      $_SESSION["msgid"] = "413";
 
-    //system feedback - group has been deleted
-    $_SESSION["msgid"] = "413";
-
-}
+   }
 
 //go to the list of groups
-header('Location: ../../Views/Gate/gate.view.php?module=groups');
+   header('Location: ../../Views/Gate/gate.view.php?module=groups');
+
 ?>

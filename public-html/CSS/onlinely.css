@@ -76,7 +76,7 @@ hr {
 .message_content {
     font-size: 1em;
     background-color: #e9ecef;
-    border-top: 1px solid #e9ecef;
+    border-top: 1px solid lightgrey;
     padding: .375rem .75rem;
 }
 
@@ -127,23 +127,15 @@ ul {
 .my_link {
     text-decoration: none;
     color: #17a2b8;
-    alignment: right;
-
 }
 
 .my_link:hover{
     text-decoration: none;
     color: dimgray;
-    alignment: right;
-
 }
 
 .my_button_float_right {
     float: right;
-}
-
-.jumbotron {
-    size: auto;
 }
 
 .smaller_margin {

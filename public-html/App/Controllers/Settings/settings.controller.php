@@ -3,7 +3,7 @@ session_start();
 require('../../model.php');
 
 //BASICS FORM
-if(isset($_POST["formSettingsBasicsSubmit"])) {
+if (isset($_POST["formSettingsBasicsSubmit"])) {
     $user_firstname = $_POST["formSettingsBasicsFirstName"];
     $user_lastname = $_POST["formSettingsBasicsLastName"];
     $user_nickname = $_POST["formSettingsBasicsNickName"];
@@ -70,9 +70,9 @@ if(isset($_POST["formSettingsBasicsSubmit"])) {
     }
 }
 
-if(isset($_POST["formSettingsBasicsClear"])) {
+if (isset($_POST["formSettingsBasicsClear"])) {
     //update the database row by setting empty strings
-    phpClearUserData( $_SESSION["uid"]);
+    phpClearUserData($_SESSION["uid"]);
 
     //system feedback - your settings has been updated
     $_SESSION["msgid"] = "212";

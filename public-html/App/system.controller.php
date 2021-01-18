@@ -1,6 +1,6 @@
 <?php
 require('Configuration/db-connection.inc.php');
-/// DAJ TO DO KONTAJNERA !! (ROW)
+
 function phpShowSystemFeedback($feedback_id) {
     switch ($feedback_id) {
         case "211":
@@ -13,10 +13,6 @@ function phpShowSystemFeedback($feedback_id) {
             $feedback_text="Data removed successfully!";
             break;
 
-        case "213":
-            $feedback_type="success";
-            $feedback_text="Password changed successfully!";
-            break;
 
         case "311":
             $feedback_type="success";
@@ -150,6 +146,11 @@ function phpShowInputFeedback($feedback_id) {
             $feedback_type="is-invalid";
             $feedback_text="The password is incorrect!";
             break;
+
+       /* case "807":
+            $feedback_type="is-invalid";
+            $feedback_text="Some of your inputs must be wrong!";
+            break;*/
 
         default:
             $feedback_type="";

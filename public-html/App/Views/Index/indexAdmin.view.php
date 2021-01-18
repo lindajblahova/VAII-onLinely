@@ -18,14 +18,15 @@ require('../../model.php');
     <link rel="stylesheet" href="../../../CSS/onlinely.css">
 </head>
 <body style="background-color: azure">
-<div class="container-fluid" >
+<div class="container-fluid">
     <div class="row sign-in-row-admin">
         <div class="col-lg-6">
 
             <h1>onLinely | Admin</h1>
         </div>
         <div class="col-lg-6">
-            <form name="formSignInAdmin" action="../../Controllers/Index/signin.controller.php" method="post" novalidate>
+            <form name="formSignInAdmin" action="../../Controllers/Index/signin.controller.php" method="post"
+                  novalidate>
                 <div class="form-inline">
                     <label class="sr-only" for="formSignInEmailAdmin">Email</label>
                     <input type="email"
@@ -35,7 +36,8 @@ require('../../model.php');
                            onkeyup="jsSignInValidateEmailAdmin()">
 
                     <label class="sr-only" for="formSignInPasswordAdmin">Password</label>
-                    <input type="password" class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0 <?php echo(phpShowInputFeedback($_SESSION['msgid'])[0]); ?>"
+                    <input type="password"
+                           class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0 <?php echo(phpShowInputFeedback($_SESSION['msgid'])[0]); ?>"
                            id="formSignInPasswordAdmin" name="formSignInPasswordAdmin" placeholder="Password"
                            onkeyup="jsSignInValidatePasswordAdmin()">
 
@@ -73,9 +75,10 @@ require('../../model.php');
     <hr>
 
     <div class="row">
-        <div class="col-lg-6 mycontent-left" >
-            <form name="formSignUpAdmin" action="../../Controllers/Index/signup.controller.php" method="post" class="my_form_group" novalidate>
-                <div class="form-group" >
+        <div class="col-lg-6 mycontent-left">
+            <form name="formSignUpAdmin" action="../../Controllers/Index/signup.controller.php" method="post"
+                  class="my_form_group" novalidate>
+                <div class="form-group">
                     <label for="formSignUpEmailAdmin">Email address</label>
                     <input type="email" <?php echo(phpShowEmailInputValue($_SESSION['formSignUpEmailAdmin'])[0]); ?>
                            class="form-control <?php if ($_SESSION['msgid'] != "801" && $_SESSION['msgid'] != "") {
@@ -134,13 +137,9 @@ require('../../model.php');
 $_SESSION["formSignUpEmailAdmin"] = ""
 ?>
 
-<script src="../../../JS/index.js">
-    jsSignUpSubmitDisableAdmin();
-</script>
+<script src="../../../JS/index.js"></script>
 
 
-<!-- Optional Javascript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

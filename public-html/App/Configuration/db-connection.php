@@ -2,5 +2,4 @@
 
 require 'db-connection.inc.php';
 
-
 ?>
