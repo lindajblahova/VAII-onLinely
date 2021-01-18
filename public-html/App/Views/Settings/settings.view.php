@@ -7,10 +7,13 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
 
 <div class="row">
     <div class="col-lg-8" style="margin: auto">
-        <form name="formSettingsBasics" action="../../Controllers/Settings/settings.controller.php" method="post"
+        <form name="formSettingsBasics"  action="../../Controllers/Settings/settings.controller.php" method="post"
               novalidate>
+            <button type="submit" style="float: right" id="deleteUserAccount" name="deleteUserAccount"
+                    class="btn btn-warning">Delete account</button>
             <div class="form-group">
-                <label for="formSettingsBasicsFirstName">First name</label>
+
+                <label for="formSettingsBasicsFirstName" class="mt-3">First name</label>
                 <input type="text"
                        class="form-control <?php if ($_SESSION['msgid'] != '201' && $_SESSION['msgid'] != '') {
                            echo 'is-valid';
@@ -129,11 +132,9 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
             <?php } ?>
 
             <button type="submit" id="formSettingsBasicsSubmit" name="formSettingsBasicsSubmit"
-                    class="btn btn-primary btn-info">Save
-            </button>
+                    class="btn btn-primary btn-info">Save</button>
             <button type="submit" id="formSettingsBasicsClear" name="formSettingsBasicsClear"
-                    class="btn btn-primary btn-info">Clear
-            </button>
+                    class="btn btn-primary btn-info">Clear</button>
         </form>
     </div>
 </div>

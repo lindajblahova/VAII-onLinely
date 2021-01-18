@@ -36,7 +36,6 @@ function jsPostsValidateTextArea(elementId) {
         var element = document.getElementById("formPostsContentEdited" + elementId);
     }
 
-
     if(!jsPostsRegexPatternContent.test(element.value)) {
         if (!document.getElementById(elementId + "InvalidFeedback")) {
             element.classList.add("is-invalid");
@@ -53,58 +52,5 @@ function jsPostsValidateTextArea(elementId) {
         }
         element.classList.remove("is-invalid");
         element.classList.add("is-valid");
-    }
-}
-
-function showTextAreaByPostId(elementId) {
-
-    //store the original content before editing so you can restore it upon clicking Cancel button
-    var originalContent = document.getElementById("databasePostsContent" + elementId).innerText;
-
-    if (document.getElementById("formPostsContentEdited" + elementId).hidden == true) {
-
-        //reset the content of the textarea to the original content from the database
-        document.getElementById("formPostsContentEdited" + elementId).value = originalContent;
-
-        document.getElementById("formPostsContentEdited" + elementId).hidden = false;
-
-        document.getElementById("formPostsEditButton" + elementId).text = "Cancel";
-        document.getElementById("formPostsEditButton" + elementId).classList.remove("btn-primary");
-        document.getElementById("formPostsEditButton" + elementId).classList.add("btn-danger");
-
-        //create the Save button
-        var saveButton = document.createElement("button");
-        saveButton.setAttribute("type", "submit");
-        saveButton.setAttribute("id", "formPostsSubmitButton" + elementId);
-        saveButton.setAttribute("name", "formPostsSubmitButton" + elementId);
-        saveButton.classList.add("btn");
-        saveButton.classList.add("btn-primary");
-        saveButton.classList.add("btn-sm");
-        saveButton.innerText = "Save";
-        document.getElementById("formPostsContentEdited" + elementId).parentNode.parentNode.appendChild(saveButton);
-
-        //hide the original post
-        document.getElementById("databasePostsContent" + elementId).hidden = true;
-
-    } else {
-        document.getElementById("formPostsContentEdited" + elementId).hidden = true;
-
-        document.getElementById("formPostsEditButton" + elementId).text = "Edit";
-        document.getElementById("formPostsEditButton" + elementId).classList.remove("btn-danger");
-        document.getElementById("formPostsEditButton" + elementId).classList.add("btn-primary");
-
-        //reset the content of the textarea to the original content from the database
-        document.getElementById("formPostsContentEdited" + elementId).value = originalContent;
-
-        //check the validity of the content
-        jsPostsValidateTextArea(elementId);
-
-        //remove the Save button
-        document.getElementById("formPostsContentEdited" + elementId).parentElement.parentElement.removeChild
-        (document.getElementById("formPostsSubmitButton" + elementId));
-
-        //show the original post
-        document.getElementById("databasePostsContent" + elementId).hidden = false;
-
     }
 }

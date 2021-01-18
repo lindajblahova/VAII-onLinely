@@ -52,6 +52,7 @@ if (isset($_POST["formSettingsBasicsSubmit"])) {
         //system feedback - your settings has been updated
         $_SESSION["msgid"] = "211";
 
+
     } else {
         //input feedback - for Javascript turned off
         if (!$firstname_validation && $user_firstname != "") {
@@ -68,7 +69,9 @@ if (isset($_POST["formSettingsBasicsSubmit"])) {
             $_SESSION["msgid"] = "206";
         }
     }
+    header('Location: ../../Views/Gate/gate.view.php?module=settings');
 }
+
 
 if (isset($_POST["formSettingsBasicsClear"])) {
     //update the database row by setting empty strings
@@ -76,7 +79,18 @@ if (isset($_POST["formSettingsBasicsClear"])) {
 
     //system feedback - your settings has been updated
     $_SESSION["msgid"] = "212";
+    header('Location: ../../Views/Gate/gate.view.php?module=settings');
 }
 
-header('Location: ../../Views/Gate/gate.view.php?module=settings');
+
+
+if (isset($_POST["deleteUserAccount"])) {
+    //update the database row by setting empty strings
+    phpDeleteUser($_SESSION["uid"]);
+
+    //system feedback - your settings has been updated
+    $_SESSION["msgid"] = "212";
+    $_SESSION["uid"] = "";
+    header('Location: ../../Views/Index/index.view.php');
+}
 ?>

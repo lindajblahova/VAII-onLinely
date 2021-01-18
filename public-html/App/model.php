@@ -82,6 +82,17 @@ function phpClearUserData($user_id)
     $db_data = "";
 }
 
+function phpDeleteUser($user_id)
+{
+    $db_data = array($user_id,$user_id);
+    phpModifyDB('DELETE FROM messages WHERE message_sender_id = ? OR message_recipient_id = ?', $db_data);
+    $db_data = "";
+    $db_data = array($user_id);
+    phpModifyDB('DELETE FROM posts WHERE post_author_id = ?', $db_data);
+    phpModifyDB('DELETE FROM groups WHERE group_owner_id = ?', $db_data);
+    phpModifyDB('DELETE FROM user WHERE user_id = ?', $db_data);
+    $db_data = "";
+}
 
 
 // ------------------------------ GROUP -----------------------------------------------------
@@ -157,22 +168,6 @@ function phpInsertPost($posts_group_id, $user_id, $posts_content)
     $db_data = array($posts_group_id, $user_id, nl2br($posts_content));
     phpModifyDB('INSERT INTO posts (post_group_id, post_author_id, post_content) values (?, ?, ?)', $db_data);
     $db_data = "";
-}
-
-function phpUpdatePost($posts_content, $posts_id)
-{
-    $db_data = array(nl2br($posts_content), $posts_id);
-    phpModifyDB('UPDATE posts SET post_content = ? WHERE post_id = ?', $db_data);
-    $db_data = "";
-
-}
-
-function phpDeletePost($posts_id)
-{
-    $db_data = array($posts_id);
-    phpModifyDB('DELETE FROM posts WHERE post_id = ?', $db_data);
-    $db_data = "";
-
 }
 
 // ----------------------------------- MESSAGES ---------------------------------------------
