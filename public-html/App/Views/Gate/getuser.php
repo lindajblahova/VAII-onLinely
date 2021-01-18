@@ -1,5 +1,5 @@
 <?php
-require('../../system.controller.php');
+require('../../model.php');
 session_start();
 ?>
 <!DOCTYPE html>
@@ -12,14 +12,12 @@ session_start();
 
 $q = intval($_GET['q']);
 
-$db_data = array($q);
-$dbUserList = phpFetchDB('SELECT * FROM user WHERE user_id = ?',$db_data);
-$db_data = "";
+//$db_data = array($q);
+$dbUserList =  phpGetUserData($q);
+//$db_data = "";
 
-$db_data = array($_SESSION["uid"],$_SESSION["uid"],$dbUserList["user_id"],$dbUserList["user_id"]);
-$dbAllMessagesList = phpFetchAllDB('SELECT * FROM messages WHERE (message_sender_id = ? OR message_recipient_id = ?)
-AND (message_sender_id = ? OR message_recipient_id = ?) ORDER BY message_date DESC',$db_data);
-$db_data = "";
+$dbAllMessagesList = phpGetMessages($_SESSION["uid"],$dbUserList["user_id"]);
+
 ?>
 <div class="row">
     <div class="col-lg-12">

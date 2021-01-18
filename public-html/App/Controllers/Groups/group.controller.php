@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('../../system.controller.php');
+require('../../model.php');
 
 $group_name = $_POST["formGroupName"];
 $group_name_pattern = "~^[^<>]{1,}$~";
@@ -14,9 +14,7 @@ if ($group_name_validation) {
     if ($_POST["formPostsGroupID"] != "") {
 
 		//update the database row
-		$db_data = array($group_name, $_POST["formPostsGroupID"]);
-		phpModifyDB('UPDATE groups SET group_name = ? WHERE group_id = ?', $db_data);
-		$db_data = "";
+		phpUpdateGroupName($group_name, $_POST["formPostsGroupID"]);
 
 		//system feedback - group name has been changed
 		$_SESSION["msgid"] = "412";
@@ -26,9 +24,8 @@ if ($group_name_validation) {
     } else {
 
         //insert the database row
-        $db_data = array($_SESSION["uid"], $group_name);
-        phpModifyDB('INSERT INTO groups (group_owner_id, group_name) values (?, ?)', $db_data);
-        $db_data = "";
+        phpInsertGroup($_SESSION["uid"], $group_name);
+;
 
         //system feedback - your group has been created
         $_SESSION["msgid"] = "411";

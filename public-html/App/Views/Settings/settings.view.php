@@ -1,10 +1,8 @@
 <?php
-$db_data = array($_SESSION["uid"]);
-$dbUserRow = phpFetchDB('SELECT * FROM user WHERE user_id = ?', $db_data);
-$db_data = "";
+$dbUserRow =phpGetUserData($_SESSION["uid"]);
 ?>
 
-<h5>Basics</h5>
+<h5>Profile info</h5>
 <hr>
 
 <div class="row">
@@ -40,6 +38,7 @@ $db_data = "";
                 <?php } ?>
             </div>
 
+            <?php if ($dbUserRow['user_role'] != 0) { ?>
             <div class="form-group">
                 <label for="formSettingsBasicsNickName">Nickname</label>
                 <input type="text" class="form-control <?php if ($_SESSION['msgid']!='203' && $_SESSION['msgid']!='')
@@ -99,6 +98,7 @@ $db_data = "";
                     </div>
                 <?php } ?>
             </div>
+            <?php } ?>
 
             <button type="submit" id="formSettingsBasicsSubmit" name="formSettingsBasicsSubmit"
                     class="btn btn-primary btn-info">Save</button>

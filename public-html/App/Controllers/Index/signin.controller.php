@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('../../system.controller.php');
+require('../../model.php');
 
 $user_email = $_POST["formSignInEmail"];
 $admin_email = $_POST["formSignInEmailAdmin"];
@@ -18,10 +18,8 @@ $password_admin_validation = preg_match($user_password_pattern, $admin_password)
 
 if ($email_validation && $password_validation) {//query the database only if email and password are regex pattern compliant
 
-    $db_data = array($user_email);
     //fetching the row by email, fetch returns the first (and only) result entry
-    $dbUserRow = phpFetchDB('SELECT * FROM user WHERE user_email = ?', $db_data);
-    $db_data = "";
+    $dbUserRow = phpDoesUserExist($user_email) ;
 
     if (!is_array($dbUserRow)) { //even regex compliant attempt can result in nonexistent record
         //echo "regex ok -> user does not exist -> wrong email or password -> feedback message";
@@ -51,10 +49,8 @@ if ($email_validation && $password_validation) {//query the database only if ema
 
 if ($email_admin_validation && $password_admin_validation) {//query the database only if ADMIN email and password are regex pattern compliant
 
-    $db_data = array($admin_email);
     //fetching the row by email, fetch returns the first (and only) result entry
-    $dbAdminRow = phpFetchDB('SELECT * FROM user WHERE user_email = ?', $db_data);
-    $db_data = "";
+    $dbAdminRow =  phpDoesUserExist($admin_email) ;
 
     if (!is_array($dbAdminRow)) { //even regex compliant attempt can result in nonexistent record
         //echo "regex ok -> user does not exist -> wrong email or password -> feedback message";

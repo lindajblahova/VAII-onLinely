@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('../../system.controller.php');
+require('../../model.php');
 
 
 $posts_content = $_POST["formPostsContent"];
@@ -14,9 +14,7 @@ $posts_content_validation = preg_match($posts_content_pattern, $posts_content);
 if ($posts_content_validation) {
 
     //insert the database row
-    $db_data = array($posts_group_id, $_SESSION["uid"], nl2br($posts_content));
-    phpModifyDB('INSERT INTO posts (post_group_id, post_author_id, post_content) values (?, ?, ?)', $db_data);
-    $db_data = "";
+    phpInsertPost($posts_group_id, $_SESSION["uid"], $posts_content);
 
     //system feedback - your message has been sent
     $_SESSION["msgid"] = "511";

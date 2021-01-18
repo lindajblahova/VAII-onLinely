@@ -39,14 +39,10 @@
 
 <?php
 
-$db_data = array($_GET["gid"]);
-$dbPostsList = phpFetchAllDB('SELECT * FROM posts WHERE post_group_id = ? ORDER BY post_date DESC', $db_data);
-$db_data = "";
+$dbPostsList = phpGetPostsInGroup($_GET["gid"]);
 
+$dbUserIsAdmin = phpGetUserData($_SESSION["uid"]);
 
-$db_data = array($_SESSION["uid"]);
-$dbUserIsAdmin = phpFetchDB('SELECT * FROM user WHERE user_id = ?', $db_data);
-$db_data = "";
 ?>
 
 <p><strong>Latest posts</strong></p>

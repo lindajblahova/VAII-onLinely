@@ -1,7 +1,5 @@
 <?php
-$db_data = array($_SESSION["uid"]);
-$dbUserRow = phpFetchDB('SELECT COUNT(*) FROM messages WHERE message_recipient_id = ? AND message_read_by_recipient = 0', $db_data);
-$db_data = "";
+$dbUserRow = phpCountNewMessages($_SESSION["uid"]);
 ?>
 
 
@@ -14,9 +12,7 @@ $db_data = "";
 
 <?php
 
-$db_data = array($_GET["gid"]);
-$dbPostsList = phpFetchAllDB('SELECT * FROM posts ORDER BY post_date DESC', $db_data);
-$db_data = "";
+$dbPostsList = phpGetAllPosts();
 
 ?>
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('../../system.controller.php');
+require('../../model.php');
 
 
 $posts_id = $_POST["formPostsPostID"];
@@ -10,9 +10,7 @@ $posts_content_pattern = "~^[^<>]{1,}$~";
 
 if ($_POST["formPostsDeleteButton"] == delete) {
     //delete the database row
-    $db_data = array($posts_id);
-    phpModifyDB('DELETE FROM posts WHERE post_id = ?', $db_data);
-    $db_data = "";
+    phpDeletePost($posts_id);
 
 //system feedback - your message has been deleted
     $_SESSION["msgid"] = "513";
@@ -24,9 +22,7 @@ if ($_POST["formPostsDeleteButton"] == delete) {
     if ($posts_content_validation) {
 
         //update the database row
-        $db_data = array(nl2br($posts_content), $posts_id);
-        phpModifyDB('UPDATE posts SET post_content = ? WHERE post_id = ?', $db_data);
-        $db_data = "";
+        phpUpdatePost($posts_content,$posts_id);
 
         //system feedback - your message has been updated
         $_SESSION["msgid"] = "512";

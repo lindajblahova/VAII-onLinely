@@ -1,10 +1,8 @@
 <?php
 session_start();
-require('../system.controller.php');
+require('../model.php');
 
-$dbData = array($_SESSION["uid"])  ;
-$dbIsAdmin = phpFetchDB('SELECT * FROM user WHERE user_id = ?', $dbData)  ;
-$dbData = "";
+$dbIsAdmin = phpGetUserData($_SESSION["uid"]);
 
 //check if session uid exists and not empty
 if (isset($_SESSION["uid"]) && $_SESSION["uid"]!="") {

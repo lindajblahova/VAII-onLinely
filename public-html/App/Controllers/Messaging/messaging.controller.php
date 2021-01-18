@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('../../system.controller.php');
+require('../../model.php');
 
 
 $messaging_recipient = $_POST["formMessagingRecipient"];
@@ -14,9 +14,7 @@ $messaging_content_validation = preg_match($messaging_content_pattern, $messagin
 if ($messaging_recipient != "default" && $messaging_content_validation) {
 
     //insert the database row
-    $db_data = array($_SESSION["uid"], $messaging_recipient, $messaging_content, 0);
-    phpModifyDB('INSERT INTO messages (message_sender_id, message_recipient_id, message_content, message_read_by_recipient) values (?, ?, ?, ?)', $db_data);
-    $db_data = "";
+    phpInsertMessage($_SESSION["uid"],$messaging_recipient,$messaging_content);
 
     //system feedback - your message has been sent
     $_SESSION["msgid"] = "311";

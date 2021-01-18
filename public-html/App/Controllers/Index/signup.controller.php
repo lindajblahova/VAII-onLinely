@@ -1,11 +1,6 @@
 <?php
-
     session_start();
-require('../../system.controller.php');
-
-    //echo $_POST["formSignUpEmail"];
-    //echo $_POST["formSignUpPassword"];
-    //echo $_POST["formSignUpPasswordConf"];
+require('../../model.php');
 
     $user_role = 2;
 
@@ -31,16 +26,11 @@ if ($user_email != "" && $user_password != "") {
         $hashed_user_password = password_hash($user_password, PASSWORD_DEFAULT);
 
         //checking if the submitted email is already in users table
-        $db_data = array($user_email);
-        $isAlreadySignedUp = phpFetchDB('SELECT user_email FROM user WHERE user_email = ?', $db_data);
-        $db_data = "";
+        $isAlreadySignedUp = phpDoesUserEmailExist($user_email);
 
         //if no result is returned, insert new record to the table, otherwise display feedback
         if (!is_array($isAlreadySignedUp)) {
-            $db_data = array($user_role, $user_email, $hashed_user_password, "", "", "", NULL, "", "");
-            phpModifyDB('INSERT INTO user (user_role ,user_email, user_password, user_firstname, user_lastname, user_nickname, user_age, user_town, user_hobbies) 
-        values ( ?, ?, ?, ?, ?, ?, ?, ?, ?)', $db_data);
-            $db_data = "";
+            phpInsertUser($user_role,$user_email,$hashed_user_password);
             $_SESSION["msgid"] = "811";
         } else {
             $_SESSION["msgid"] = "804";
@@ -71,16 +61,11 @@ if ($admin_email != "" && $admin_password != "") {
 
 
         //checking if the submitted email is already in users table
-        $db_data = array($admin_email);
-        $isAlreadySignedUp = phpFetchDB('SELECT user_email FROM user WHERE user_email = ?', $db_data);
-        $db_data = "";
+        $isAlreadySignedUp =  phpDoesUserEmailExist($admin_email);
 
         //if no result is returned, insert new record to the table, otherwise display feedback
         if (!is_array($isAlreadySignedUp)) {
-            $db_data = array($user_role, $admin_email, $hashed_admin_password, "", "", "", NULL, "", "");
-            phpModifyDB('INSERT INTO user (user_role ,user_email, user_password, user_firstname, user_lastname, user_nickname, user_age, user_town, user_hobbies) 
-        values ( ?, ?, ?, ?, ?, ?, ?, ?, ?)', $db_data);
-            $db_data = "";
+            phpInsertUser($user_role,$admin_email,$hashed_admin_password);
             $_SESSION["msgid"] = "811";
         } else {
             $_SESSION["msgid"] = "804";

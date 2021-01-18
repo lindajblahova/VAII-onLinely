@@ -1,11 +1,8 @@
 <?php
-$db_data = array();
-$dbGroupsList = phpFetchAllDB('SELECT * FROM groups', $db_data);
-$db_data = "";
 
-$db_data = array($_SESSION["uid"]);
-$dbUserIsAdmin = phpFetchDB('SELECT * FROM user WHERE user_id = ?', $db_data);
-$db_data = "";
+$dbGroupsList = phpGetAllGroups();
+
+$dbUserIsAdmin = phpGetUserData($_SESSION["uid"]);
 ?>
 
 

@@ -1,5 +1,5 @@
 <?php session_start();
-require('../../system.controller.php');
+require('../../model.php');
 
 ?>
 
@@ -128,42 +128,6 @@ require('../../system.controller.php');
             <p>We hope you'll enjoy onLinely!</p>
         </div>
     </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="card bg-warning card_margin mb-4">
-                <div class="card-header">Groups&Posts</div>
-                <div class="card-body text-white">
-                    <h5 class="card-title">Create a group and add some posts</h5>
-                    <p class="card-text">In Groups, you can create your group where you can share some posts with other people, as well as in other existing group. </p>
-                    <p></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="card border-info card_margin mb-4">
-                <div class="card-header">Messaging</div>
-                <div class="card-body text-secondary">
-                    <h5 class="card-title">Send and recieve private messages</h5>
-                    <p class="card-text">Use the email-like communication to communicate via private messages with users from all around the world. Make some new friends!</p>
-                    <p></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="card bg-info card_margin mb-4" >
-                <div class="card-header">Settings&Profiles</div>
-                <div class="card-body text-white">
-                    <h5 class="card-title">Update your profile, and check others' too</h5>
-                    <p class="card-text">Add information such as your age to your profile in the settings. See others' profile to find out what you have in common!</p>
-                    <p></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
 
 <?php $_SESSION["msgid"] = "";

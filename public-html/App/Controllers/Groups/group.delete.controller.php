@@ -1,14 +1,11 @@
 <?php
 session_start();
-require('../../system.controller.php');
+require('../../model.php');
 
 if ($_POST["formGroupsDeleteButton"] == delete) {
 
     //delete all posts assigned to the group, delete the group
-    $db_data = array($_POST["formGroupsGroupID"]);
-    phpModifyDB('DELETE FROM posts WHERE post_group_id = ?', $db_data);
-    phpModifyDB('DELETE FROM groups WHERE group_id = ?', $db_data);
-    $db_data = "";
+    phpDeleteGroup($_POST["formGroupsGroupID"]);
 
     //system feedback - group has been deleted
     $_SESSION["msgid"] = "413";

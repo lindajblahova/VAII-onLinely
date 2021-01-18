@@ -1,10 +1,9 @@
 <?php
 session_start();
-require('../../system.controller.php');
-$db_data = array($_SESSION["uid"]);
+require('../../model.php');
+
 //fetching the row by email, fetch returns the first (and only) result entry
-$dbUserRow = phpFetchDB('SELECT * FROM user WHERE user_id = ?', $db_data);
-$db_data = "";
+$dbUserRow = phpGetUserData($_SESSION["uid"]);
 ?>
 
 <!DOCTYPE html>
@@ -78,10 +77,7 @@ $db_data = "";
 
     <?php
     if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
-    $db_data = array($_SESSION["uid"]);
-    //fetching the row by email, fetch returns the first (and only) result entry
-    $dbUserRow = phpFetchDB('SELECT * FROM user WHERE user_id = ?', $db_data);
-    $db_data = "";
+        $dbUserRow = phpGetUserData($_SESSION["uid"]);
     ?>
 
     <!-- LOAD MODULE -->

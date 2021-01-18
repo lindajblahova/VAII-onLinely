@@ -2,14 +2,9 @@
 session_start();
 if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
 
-    $db_data = array();
-    $dbRecipientsList = phpFetchAllDB('SELECT * FROM user ORDER BY user_email', $db_data);
-    $db_data = "";
+    $dbRecipientsList = phpGetAllUserForMessaging();
 
-   $db_data = array($_SESSION["uid"], $_SESSION["uid"]);
-    $dbMessagesList = phpFetchAllDB('SELECT * FROM messages WHERE message_sender_id = ? OR message_recipient_id = ?
-    ORDER BY message_date DESC', $db_data);
-    $db_data = "";
+    $dbUserMessagesList = phpGetUserMessages($_SESSION["uid"]);
 
     ?>
 
@@ -102,7 +97,7 @@ if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
         <div class="col-lg-12">
             <table class="table" id="txtHint">
 
-                <?php foreach ($dbMessagesList as $dbMessageRow) { ?>
+                <?php foreach ($dbUserMessagesList as $dbMessageRow) { ?>
                     <tr>
                         <td class="message_header<?php if ($dbMessageRow["message_sender_id"] == $_SESSION["uid"] )
                         {?> message_sender <?php } if ($dbMessageRow["message_read_by_recipient"] == 0 &&
@@ -134,9 +129,7 @@ if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
 
     <?php
     //UPDATE MESSAGES READ BY RECIPIENT
-    $db_data = array($_SESSION["uid"]);
-    phpModifyDB('UPDATE messages SET message_read_by_recipient = 1 WHERE message_recipient_id = ?', $db_data);
-    $db_date = "";
+    phpUpdateReadMessages($_SESSION["uid"]);
 }
 ?>
 

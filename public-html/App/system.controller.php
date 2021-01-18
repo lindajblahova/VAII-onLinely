@@ -191,36 +191,4 @@ function phpFetchAllDB($db_query, $db_data) {
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function phpShowEmailInputValue($user_email) {
-    if ($user_email != "") {
-        $content="value='" . $user_email . "'";
-    }else{
-        $content="";
-    }
-
-    return $content;
-}
-
-// Return user's email based on his id
-function phpGetUserEmail($user_id) {
-    $db_data = array($user_id);
-    $db_result = phpFetchDB('SELECT user_email FROM user WHERE user_id = ?', $db_data);
-    return $db_result['user_email'];
-}
-
-// Return group's name based on its id
-function phpGetGroupName($group_id) {
-    $db_data = array($group_id);
-    $db_result = phpFetchDB('SELECT group_name FROM groups WHERE group_id = ?', $db_data);
-    return $db_result['group_name'];
-}
-
-// Return group's owner id based on group's id
-function phpGetGroupOwnerID($group_id) {
-    $db_data = array($group_id);
-    $db_result = phpFetchDB('SELECT group_owner_id FROM groups WHERE group_id = ?', $db_data);
-    return $db_result['group_owner_id'];
-}
-
-
 ?>

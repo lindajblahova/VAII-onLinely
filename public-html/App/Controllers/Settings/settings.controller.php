@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('../../system.controller.php');
+require('../../model.php');
 
 //BASICS FORM
 if(isset($_POST["formSettingsBasicsSubmit"])) {
@@ -24,9 +24,7 @@ if(isset($_POST["formSettingsBasicsSubmit"])) {
     //query the database only if at least one name matches the regex pattern
     if ($firstname_validation || $lastname_validation || $nickname_validation || $town_validation || $age_validation || $hobbies_validation) {
         //get the current values from the database and store them so we can potentially save them back if some value is actually empty
-        $db_data = array($_SESSION["uid"]);
-        $dbUserRow = phpFetchDB('SELECT * FROM user WHERE user_id = ?', $db_data);
-        $db_data = "";
+        $dbUserRow = phpGetUserData($_SESSION["uid"]);
 
         //check each of the three inputs validation, if not valid, assign the db value instead
         if (!$firstname_validation) {
@@ -49,10 +47,7 @@ if(isset($_POST["formSettingsBasicsSubmit"])) {
         }
 
         //update the database row
-        $db_data = array($user_firstname, $user_lastname, $user_nickname, $user_age, $user_town, $user_hobbies, $_SESSION["uid"]);
-        phpModifyDB('UPDATE user SET user_firstname = ?, user_lastname = ?, user_nickname = ?, 
-        user_age = ?, user_town = ?, user_hobbies = ? WHERE user_id = ?', $db_data);
-        $db_data = "";
+        phpUpdateUserData($user_firstname, $user_lastname, $user_nickname, $user_age, $user_town, $user_hobbies, $_SESSION["uid"]);
 
         //system feedback - your settings has been updated
         $_SESSION["msgid"] = "211";
@@ -77,10 +72,7 @@ if(isset($_POST["formSettingsBasicsSubmit"])) {
 
 if(isset($_POST["formSettingsBasicsClear"])) {
     //update the database row by setting empty strings
-    $db_data = array("", "", "", NULL, "", "", $_SESSION["uid"]);
-    phpModifyDB('UPDATE user SET user_firstname = ?, user_lastname = ?, user_nickname = ?, 
-        user_age = ?, user_town = ?, user_hobbies = ? WHERE user_id = ?', $db_data);
-    $db_data = "";
+    phpClearUserData( $_SESSION["uid"]);
 
     //system feedback - your settings has been updated
     $_SESSION["msgid"] = "212";
