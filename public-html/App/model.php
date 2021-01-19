@@ -1,15 +1,98 @@
 <?php
 require('system.controller.php');
 
-function phpShowEmailInputValue($user_email)
-{
-    if ($user_email != "") {
-        $content = "value='" . $user_email . "'";
-    } else {
-        $content = "";
+function phpShowInputFeedback($feedback_id) {
+    switch ($feedback_id) {
+
+        case "101":
+            $feedback_type="is-invalid";
+            $feedback_text="This is not a valid email address";
+            break;
+
+        case "102":
+            $feedback_type="is-invalid";
+            $feedback_text="Password must be between 8 and 16 characters long, with at least one uppercase and lowercase character and one number.";
+            break;
+
+        case "103":
+            $feedback_type="is-invalid";
+            $feedback_text="Passwords don't match";
+            break;
+
+        case "104":
+            $feedback_type="is-invalid";
+            $feedback_text="This email is not registered!";
+            break;
+
+        case "105":
+            $feedback_type="is-invalid";
+            $feedback_text="The password is incorrect!";
+            break;
+
+        case "106":
+            $feedback_type="is-invalid";
+            $feedback_text="Some of your inputs must be wrong!";
+            break;
+
+        case "201":
+            $feedback_type="is-invalid";
+            $feedback_text="First name must be between 3 and 50 characters long and can contain only letters.";
+            break;
+
+        case "202":
+            $feedback_type="is-invalid";
+            $feedback_text="Last name must be between 3 and 50 characters long and can contain only letters.";
+            break;
+
+        case "203":
+            $feedback_type="is-invalid";
+            $feedback_text="Nickname must be between 3 and 50 characters long and can contain only letters.";
+            break;
+
+        case "204":
+            $feedback_type="is-invalid";
+            $feedback_text="Age must be between 0 and 99.";
+            break;
+
+        case "205":
+            $feedback_type="is-invalid";
+            $feedback_text="Town must be between 3 and 50 characters long and can contain only letters.";
+            break;
+
+        case "206":
+            $feedback_type="is-invalid";
+            $feedback_text="Hobbies can not contain '<' and '>' characters.";
+            break;
+
+        case "301":
+            $feedback_type="is-invalid";
+            $feedback_text="Choose the email address of the recipient.";
+            break;
+
+        case "302":
+            $feedback_type="is-invalid";
+            $feedback_text="Message can not be empty and can not contain '<' and '>' characters.";
+            break;
+
+        case "401":
+            $feedback_type="is-invalid";
+            $feedback_text="Group name can not be empty and can not contain '<' and '>' characters.";
+            break;
+
+        case "501":
+            $feedback_type="is-invalid";
+            $feedback_text="Post can not be empty and can not contain '<' and '>' characters.";
+            break;
+
+        default:
+            $feedback_type="";
+            $feedback_text="Unspecified error or warning";
+            break;
     }
-    return $content;
+
+    return [$feedback_type, $feedback_text];
 }
+
 
 // ----------------------------------- USER METHODS -------------------
 

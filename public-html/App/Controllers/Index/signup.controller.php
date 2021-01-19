@@ -31,22 +31,22 @@ if ($user_email != "" && $user_password != "") {
         //if no result is returned, insert new record to the table, otherwise display feedback
         if (!is_array($isAlreadySignedUp)) {
             phpInsertUser($user_role, $user_email, $hashed_user_password);
-            $_SESSION["msgid"] = "811";
+            $_SESSION["msgid"] = "111";
         } else {
-            $_SESSION["msgid"] = "804";
+            $_SESSION["msgid"] = "112";
         }
         header('Location: ../../Views/Index/index.view.php');
     } else if (!$email_validation) {
-        $_SESSION["msgid"] = "801";
-        $_SESSION["formSignUpEmail"] = $user_email;
+        $_SESSION["msgid"] = "101";
+        //$_SESSION["formSignUpEmail"] = $user_email;
         header('Location: ../../Views/Index/index.view.php');
     } else if (!$password_validation) {
-        $_SESSION["msgid"] = "802";
-        $_SESSION["formSignUpEmail"] = $user_email;
+        $_SESSION["msgid"] = "102";
+        //$_SESSION["formSignUpEmail"] = $user_email;
         header('Location: ../../Views/Index/index.view.php');
     } else if ($user_password != $_POST["formSignUpPasswordConf"]) {
-        $_SESSION["msgid"] = "803";
-        $_SESSION["formSignUpEmail"] = $user_email;
+        $_SESSION["msgid"] = "103";
+        //$_SESSION["formSignUpEmail"] = $user_email;
         header('Location: ../../Views/Index/index.view.php');
     }
 }
@@ -61,27 +61,27 @@ if ($admin_email != "" && $admin_password != "") {
 
 
         //checking if the submitted email is already in users table
-        $isAlreadySignedUp = phpDoesUserEmailExist($admin_email);
+        $isAlreadySignedUp = phpDoesUserExist($admin_email);
 
         //if no result is returned, insert new record to the table, otherwise display feedback
         if (!is_array($isAlreadySignedUp)) {
             phpInsertUser($user_role, $admin_email, $hashed_admin_password);
-            $_SESSION["msgid"] = "811";
+            $_SESSION["msgid"] = "111";
         } else {
-            $_SESSION["msgid"] = "804";
+            $_SESSION["msgid"] = "112";
         }
         header('Location: ../../Views/Index/indexAdmin.view.php');
     } else if (!$email_admin_validation) {
-        $_SESSION["msgid"] = "801";
-        $_SESSION["formSignUpEmailAdmin"] = $user_email;
+        $_SESSION["msgid"] = "101";
+        //$_SESSION["formSignUpEmailAdmin"] = $user_email;
         header('Location: ../../Views/Index/indexAdmin.view.php');
     } else if (!$password_admin_validation) {
-        $_SESSION["msgid"] = "802";
-        $_SESSION["formSignUpEmailAdmin"] = $user_email;
+        $_SESSION["msgid"] = "102";
+       // $_SESSION["formSignUpEmailAdmin"] = $user_email;
         header('Location: ../../Views/Index/indexAdmin.view.php');
     } else if ($admin_password != $_POST["formSignUpPasswordConfAdmin"]) {
-        $_SESSION["msgid"] = "803";
-        $_SESSION["formSignUpEmailAdmin"] = $user_email;
+        $_SESSION["msgid"] = "103";
+        //$_SESSION["formSignUpEmailAdmin"] = $user_email;
         header('Location: ../../Views/Index/indexAdmin.view.php');
     }
 }

@@ -2,7 +2,7 @@
 session_start();
 require('../../model.php');
 
-//fetching the row by email, fetch returns the first (and only) result entry
+//fetching the row by email
 $dbUserRow = phpGetUserData($_SESSION["uid"]);
 ?>
 
@@ -13,7 +13,6 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>onLinely</title>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -32,37 +31,32 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
             <li class="nav-item <?php if ($_GET['module'] == 'home') {
                 echo 'active';
             } ?>">
-                <a class="nav-link" href="gate.view.php?module=home">Home<?php if ($_GET['module'] == 'home') { ?>
-                        <span class="sr-only">(current)</span><?php } ?></a>
+                <a class="nav-link" href="gate.view.php?module=home">Home</a>
             </li>
             <li class="nav-item <?php if ($_GET['module'] == 'messaging') {
                 echo 'active';
             } ?>">
                 <a class="nav-link"
-                   href="gate.view.php?module=messaging">Messaging<?php if ($_GET['module'] == 'messaging') { ?>
-                        <span class="sr-only">(current)</span><?php } ?></a>
+                   href="gate.view.php?module=messaging">Messaging</a>
             </li>
             <li class="nav-item <?php if ($_GET['module'] == 'groups') {
                 echo 'active';
             } ?>">
-                <a class="nav-link" href="gate.view.php?module=groups">Groups<?php if ($_GET['module'] == 'groups') { ?>
-                        <span class="sr-only"> (current)</span><?php } ?></a>
+                <a class="nav-link" href="gate.view.php?module=groups">Groups</a>
             </li>
 
             <li class="nav-item <?php if ($_GET['module'] == 'settings') {
                 echo 'active';
             } ?>">
                 <a class="nav-link"
-                   href="gate.view.php?module=settings">Settings<?php if ($_GET['module'] == 'settings') { ?>
-                        <span class="sr-only">(current)</span><?php } ?></a>
+                   href="gate.view.php?module=settings">Settings</a>
             </li>
 
             <li class="nav-item <?php if ($_GET['module'] == 'profiles') {
                 echo 'active';
             } ?>">
                 <a class="nav-link"
-                   href="gate.view.php?module=profiles">Profiles<?php if ($_GET['module'] == 'settings') { ?>
-                        <span class="sr-only">(current)</span><?php } ?></a>
+                   href="gate.view.php?module=profiles">Profiles</a>
             </li>
 
             <li class="nav-item">
@@ -77,7 +71,7 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
 
 <div class="container">
 
-    <!-- SYSTEM-WIDE FEEDBACK -->
+    <!-- SYSTEM FEEDBACK -->
     <?php if (isset($_SESSION["msgid"]) && $_SESSION["msgid"] != "" && phpShowSystemFeedback($_SESSION["msgid"])[0] != "") { ?>
         <div class="row mt-3">
             <div class="col-12">
@@ -87,12 +81,11 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
             </div>
         </div>
     <?php } ?>
-    <!-- SYSTEM-WIDE FEEDBACK -->
 
     <?php
     if (isset($_SESSION["uid"]) || $_SESSION["uid"] != "") {
         $dbUserRow = phpGetUserData($_SESSION["uid"]);
-        ?>
+    ?>
 
         <!-- LOAD MODULE -->
         <?php
@@ -130,23 +123,9 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
                 break;
         }
         ?>
-        <!-- LOAD MODULE -->
-
     <?php } ?>
 </div>
 
-
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
 </body>
 </html>
 
