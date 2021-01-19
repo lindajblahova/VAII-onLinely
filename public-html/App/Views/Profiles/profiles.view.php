@@ -48,9 +48,9 @@ $dbMyProfile = phpGetUserData($_SESSION["uid"]);
     </div>
     <div class="form-group col-lg-3 mt-3">
         <input type="text" class="form-control "
-               id="mySearch" onkeyup="myFunction()" placeholder="Search profile by email"
+               id="mySearchProfile" onkeyup="myFunction()" placeholder="Search profile by email"
                title="Search email">
-        <ul id="myMenu" style="float: top">
+        <ul id="mySearchProfileMenu" style="float: top">
 
             <?php foreach ($dbProfilesList as $dbProfileRow) { ?>
 
