@@ -1,0 +1,27 @@
+php-apache:  
+ build: ./php-apache/
+ container_name: php-apache-container
+ ports:
+  - 80:80
+ links:
+  - mysql
+ volumes:
+  - ./public-html/:/var/www/html/
+
+mysql:  
+ image: mysql:5.7
+ container_name: mysql-container
+ volumes:
+  - /var/lib/mysql
+ environment:
+  MYSQL_ROOT_PASSWORD: onlinely-linda
+
+phpmyadmin:
+ image: phpmyadmin/phpmyadmin
+ container_name: phpmyadmin-container
+ ports:
+  - 8080:80
+ links:
+  - mysql
+ environment:
+  PMA_HOST: mysql
