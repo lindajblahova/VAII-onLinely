@@ -6,19 +6,17 @@ require('../../model.php'); ?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>onLinely</title>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <script src="../../../JS/index.js"></script>
     <link rel="stylesheet" href="../../../CSS/onlinely.css">
+    <title>onLinely</title>
+
 </head>
 <body style="background-color: azure">
 <div class="container-fluid">
     <div class="row sign-in-row">
         <div class="col-lg-6">
-            <h1>onLinely</h1>
+            <h1 style="color: white">onLinely</h1>
         </div>
         <div class="col-lg-6">
             <form name="formSignIn" action="../../Controllers/Index/signin.controller.php" method="post">
@@ -70,11 +68,11 @@ require('../../model.php'); ?>
 
     <div class="row">
         <div class="col-lg-6 mycontent-left">
-            <form name="formSignUp" action="../../Controllers/Index/signup.controller.php" method="post" class="my_form_group">
+            <form name="formSignUp" action="../../Controllers/Index/signup.controller.php" method="post" class="my_form_group" novalidate>
                 <div class="form-group">
                     <label for="formSignUpEmail">Email address</label>
                     <input type="email" class="form-control" id="formSignUpEmail" placeholder="Enter your email address"
-                           name="formSignUpEmail" onkeyup="jsSignUpValidateEmail()">
+                          name="formSignUpEmail" onkeyup="jsSignUpValidateEmail()">
                     <?php if ($_SESSION['msgid'] == "101") { ?>
                         <div class="text-danger">
                             <?php echo(phpShowInputFeedback($_SESSION['msgid'])[1]); ?>
@@ -154,5 +152,9 @@ require('../../model.php'); ?>
 $_SESSION["formSignUpEmail"] = ""
 ?>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="../../../JS/index.js"></script>
 </body>
 </html>

@@ -4,8 +4,13 @@ $dbUserMessagesRow = phpCountNewMessages($_SESSION["uid"]);
 
 $dbPostsList = phpGetAllPosts();
 ?>
-<h5>Welcome!</h5>
-<hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <h5 class="mt-3">Welcome!</h5>
+            <hr>
+        </div>
+    </div>
+
 
 <p>You have <strong><?php echo $dbUserMessagesRow["COUNT(*)"]; ?></strong> unread messages.</p>
 

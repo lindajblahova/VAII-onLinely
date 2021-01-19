@@ -73,7 +73,7 @@ if (isset($_POST["formSettingsBasicsSubmit"])) {
 
 
 if (isset($_POST["formSettingsBasicsClear"])) {
-    //
+    //clear
     phpUpdateUserData("", "", "", NULL, "", "", $_SESSION["uid"]);
 
     //system feedback
@@ -84,10 +84,9 @@ if (isset($_POST["formSettingsBasicsClear"])) {
 
 
 if (isset($_POST["deleteUserAccount"])) {
-
+    //delete account
     phpDeleteUser($_SESSION["uid"]);
 
-    //system feedback
     $_SESSION["msgid"] = "212";
     $_SESSION["uid"] = "";
     header('Location: ../../Views/Index/index.view.php');

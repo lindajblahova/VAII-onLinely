@@ -49,8 +49,8 @@ hr {
 }
 
 .nav-link-user, .nav-link-user:hover {
-     color: white;
- }
+    color: white;
+}
 
 .table td {
     border-top: 0;
@@ -65,7 +65,7 @@ hr {
     border-right: 1px solid #17a2b8;
 }
 
-.message_sender{
+.message_sender {
     color: deepskyblue;
 }
 
@@ -104,7 +104,7 @@ hr {
 }
 
 .my_text {
-    margin-left: 11% ;
+    margin-left: 11%;
 }
 
 .group_content {
@@ -129,7 +129,7 @@ ul {
     color: #17a2b8;
 }
 
-.my_link:hover{
+.my_link:hover {
     text-decoration: none;
     color: dimgray;
 }
@@ -153,6 +153,10 @@ ul {
     margin-bottom: 5rem;
 }
 
+.my_title {
+    font-size: xx-large;
+    color: #17a2b8
+}
 
 html {
     scroll-behavior: smooth;
@@ -161,7 +165,7 @@ html {
 @media (max-width: 992px) {
 
     .float-right {
-        float: left!important;
+        float: left !important;
     }
 
     .my_form_group {
@@ -175,6 +179,7 @@ html {
     .index_img {
         display: none;
     }
+
     .card_margin {
         margin-top: 0%;
     }
@@ -206,6 +211,7 @@ html {
     .display-4 {
         font-size: xx-large;
     }
+
     h4 {
         font-size: small;
         margin-bottom: 20px;
@@ -226,7 +232,7 @@ html {
 
 @media (max-width: 600px) {
     .display-4 {
-        font-size: x-large;
+        font-size: small;
         font-weight: bold;
     }
 
@@ -241,4 +247,5 @@ html {
         margin-bottom: 10px;
         margin-top: 20px;
     }
+
 }

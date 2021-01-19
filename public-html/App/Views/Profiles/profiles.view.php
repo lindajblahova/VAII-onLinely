@@ -6,13 +6,13 @@ $dbProfilesList = phpGetAllProfiles($_SESSION["uid"]);
 $dbMyProfile = phpGetUserData($_SESSION["uid"]);
 
 ?>
-
 <div class="row">
-    <div class="col-lg-6">
-        <h5>Your profile</h5>
+    <div class="col-lg-12">
+        <h5 class="mt-3">Your profile</h5>
+        <hr>
     </div>
 </div>
-<hr>
+
 
 <div class="row">
     <div class="jumbotron col-lg-12">
@@ -48,9 +48,9 @@ $dbMyProfile = phpGetUserData($_SESSION["uid"]);
     </div>
     <div class="form-group col-lg-3 mt-3">
         <input type="text" class="form-control "
-               id="searchUserProfilesForm" onkeyup="jssearchUserProfilesForm()" placeholder="Search profile by email"
+               id="mySearch" onkeyup="myFunction()" placeholder="Search profile by email"
                title="Search email">
-        <ul id="searchUserProfilesFormMenu" style="float: top">
+        <ul id="myMenu" style="float: top">
 
             <?php foreach ($dbProfilesList as $dbProfileRow) { ?>
 
@@ -61,7 +61,6 @@ $dbMyProfile = phpGetUserData($_SESSION["uid"]);
             <?php } ?>
         </ul>
     </div>
-
 
     <?php foreach ($dbProfilesList as $dbProfileRow) { ?>
 
@@ -95,8 +94,8 @@ $dbMyProfile = phpGetUserData($_SESSION["uid"]);
 
     <?php } ?>
 
+    <script src="../../../JS/profiles.js"></script>
 </div>
 
-<script src="../../../JS/profiles.js"></script>
 
 

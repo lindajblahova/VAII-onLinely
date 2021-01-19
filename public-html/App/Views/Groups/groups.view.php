@@ -6,7 +6,7 @@ $dbUserIsAdmin = phpGetUserData($_SESSION["uid"]);
 ?>
 <div class="row">
     <div class="col-lg-6">
-        <h5>Groups</h5>
+        <h5 class="mt-3">Groups</h5>
     </div>
     <div class="col-lg-6">
         <a href="../Gate/gate.view.php?module=group" class="btn btn-success float-right mt-2" role="button">Create new

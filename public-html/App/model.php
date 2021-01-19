@@ -11,7 +11,7 @@ function phpShowInputFeedback($feedback_id) {
 
         case "102":
             $feedback_type="is-invalid";
-            $feedback_text="Password must be between 8 and 16 characters long, with at least one uppercase and lowercase character and one number.";
+            $feedback_text="Password must be between 8 and 15 characters long, with at least one uppercase and lowercase character and one number.";
             break;
 
         case "103":
@@ -117,7 +117,6 @@ function phpGetAllUserForMessaging()
 function phpDoesUserExist($user_email)
 {
     $db_data = array($user_email);
-    //fetching the row by email, fetch returns the first (and only) result entry
     $db_result = phpFetchDB('SELECT * FROM user WHERE user_email = ?', $db_data);
     $db_data = "";
     return $db_result;
@@ -172,7 +171,6 @@ function phpDeleteUser($user_id)
 
 // ------------------------------ GROUP -----------------------------------------------------
 
-// Return group's name based on its id
 function phpGetGroupName($group_id)
 {
     $db_data = array($group_id);
@@ -181,7 +179,6 @@ function phpGetGroupName($group_id)
     return $db_result['group_name'];
 }
 
-// Return group's owner id based on group's id
 function phpGetGroupOwnerID($group_id)
 {
     $db_data = array($group_id);
@@ -210,7 +207,6 @@ function phpUpdateGroupName($group_name, $group_id)
     phpModifyDB('UPDATE groups SET group_name = ? WHERE group_id = ?', $db_data);
     $db_data = "";
 }
-
 
 // ----------------------------- POST -------------------------------------------
 

@@ -5,9 +5,12 @@ $dbRecipientsList = phpGetAllUserForMessaging();
 $dbUserMessagesList = phpGetUserMessages($_SESSION["uid"]);
 
 ?>
-    <script src="../../../JS/messaging.js"></script>
-    <h5>Messaging</h5>
-    <hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <h5 class="mt-3">Messaging</h5>
+            <hr>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-lg-12">
@@ -102,7 +105,7 @@ $dbUserMessagesList = phpGetUserMessages($_SESSION["uid"]);
         </div>
     </div>
 
-
+    <script src="../../../JS/messaging.js"></script>
 <?php
     //UPDATE MESSAGES READ BY RECIPIENT
     phpUpdateReadMessages($_SESSION["uid"]);

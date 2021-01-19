@@ -8,13 +8,12 @@ $messaging_content_pattern = "~^[^<>]{1,}$~";
 
 $messaging_content_validation = preg_match($messaging_content_pattern, $messaging_content);
 
-//query the database only if recipient is valid and content is regex compliant
 if ($messaging_recipient != "default" && $messaging_content_validation) {
 
     //insert the database row
     phpInsertMessage($_SESSION["uid"], $messaging_recipient, $messaging_content);
 
-    //system feedback - your message has been sent
+    //message sent
     $_SESSION["msgid"] = "311";
 
 } else {

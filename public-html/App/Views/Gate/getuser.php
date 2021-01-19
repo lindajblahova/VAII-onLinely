@@ -4,9 +4,7 @@ session_start();
 
 $q = intval($_GET['q']);
 
-//$db_data = array($q);
 $dbUserList = phpGetUserData($q);
-//$db_data = "";
 
 $dbAllMessagesList = phpGetMessages($_SESSION["uid"], $dbUserList["user_id"]);
 

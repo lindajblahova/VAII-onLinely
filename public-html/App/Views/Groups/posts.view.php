@@ -1,3 +1,7 @@
+<?php
+$dbPostsList = phpGetPostsInGroup($_GET["gid"]);
+$dbUserIsAdmin = phpGetUserData($_SESSION["uid"]);
+?>
 <div class="row">
     <div class="col-lg-6">
         <h5><?php echo phpGetGroupName($_GET["gid"]); ?></h5>
@@ -35,14 +39,6 @@
     </div>
 </div>
 
-<?php
-
-$dbPostsList = phpGetPostsInGroup($_GET["gid"]);
-
-$dbUserIsAdmin = phpGetUserData($_SESSION["uid"]);
-
-?>
-
 <p><strong>Latest posts</strong></p>
 <hr>
 
@@ -62,8 +58,6 @@ $dbUserIsAdmin = phpGetUserData($_SESSION["uid"]);
     </div>
 
 </div>
-
-
 
 <?php
 $_SESSION["posts_content"] = "";

@@ -22,13 +22,10 @@ if ($user_email != "" && $user_password != "") {
     if ($email_validation && $password_validation && $user_password == $_POST["formSignUpPasswordConf"]) {
 
         $user_role = 1;
-        // hash the pasword before storing it to the database
         $hashed_user_password = password_hash($user_password, PASSWORD_DEFAULT);
 
-        //checking if the submitted email is already in users table
         $isAlreadySignedUp = phpDoesUserExist($user_email);
 
-        //if no result is returned, insert new record to the table, otherwise display feedback
         if (!is_array($isAlreadySignedUp)) {
             phpInsertUser($user_role, $user_email, $hashed_user_password);
             $_SESSION["msgid"] = "111";
@@ -56,14 +53,12 @@ if ($admin_email != "" && $admin_password != "") {
     if ($email_admin_validation && $password_admin_validation && $admin_password == $_POST["formSignUpPasswordConfAdmin"]) {
 
         $user_role = 0;
-        // hash the pasword before storing it to the database
+
         $hashed_admin_password = password_hash($admin_password, PASSWORD_DEFAULT);
 
-
-        //checking if the submitted email is already in users table
         $isAlreadySignedUp = phpDoesUserExist($admin_email);
 
-        //if no result is returned, insert new record to the table, otherwise display feedback
+        //if no result is returned, insert
         if (!is_array($isAlreadySignedUp)) {
             phpInsertUser($user_role, $admin_email, $hashed_admin_password);
             $_SESSION["msgid"] = "111";
@@ -73,17 +68,18 @@ if ($admin_email != "" && $admin_password != "") {
         header('Location: ../../Views/Index/indexAdmin.view.php');
     } else if (!$email_admin_validation) {
         $_SESSION["msgid"] = "101";
-        //$_SESSION["formSignUpEmailAdmin"] = $user_email;
         header('Location: ../../Views/Index/indexAdmin.view.php');
     } else if (!$password_admin_validation) {
         $_SESSION["msgid"] = "102";
-       // $_SESSION["formSignUpEmailAdmin"] = $user_email;
         header('Location: ../../Views/Index/indexAdmin.view.php');
     } else if ($admin_password != $_POST["formSignUpPasswordConfAdmin"]) {
         $_SESSION["msgid"] = "103";
-        //$_SESSION["formSignUpEmailAdmin"] = $user_email;
         header('Location: ../../Views/Index/indexAdmin.view.php');
     }
+}
+
+if ($user_email == "" && $user_password == "") {
+    header('Location: ../../Views/Index/index.view.php');
 }
 
 ?>

@@ -1,9 +1,12 @@
 <?php
 $dbUserRow = phpGetUserData($_SESSION["uid"]);
 ?>
-
-<h5>Profile info</h5>
-<hr>
+<div class="row">
+    <div class="col-lg-12">
+        <h5 class="mt-3">Profile info</h5>
+        <hr>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-lg-8" style="margin: auto">
