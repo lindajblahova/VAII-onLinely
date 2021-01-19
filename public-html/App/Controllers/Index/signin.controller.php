@@ -5,11 +5,11 @@ require('../../model.php');
 
     $user_email = $_POST["formSignInEmail"];
     $admin_email = $_POST["formSignInEmailAdmin"];
-    $user_email_pattern = "~^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$~";
+    $user_email_pattern = "~^[\w]+@[\w]+\.+[\w]{2,3}$~";
 
     $user_password = $_POST["formSignInPassword"];
     $admin_password = $_POST["formSignInPasswordAdmin"];
-    $user_password_pattern = "~(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$#]).{8,16}~";
+    $user_password_pattern = "~(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$~";
 
     $email_validation = preg_match($user_email_pattern, $user_email);
     $email_admin_validation = preg_match($user_email_pattern, $admin_email);
@@ -45,7 +45,7 @@ if ($user_email != "" && $user_password != "") {
     } else { //not regex pattern compliant -> cannot be in the database, don't query the database, return feedback
 
         //echo "not regex compliant -> wrong email or password -> feedback message";
-        //$_SESSION["msgid"] = "807";
+        $_SESSION["msgid"] = "807";
         header('Location: ../../Views/Index/index.view.php');
     }
 }
@@ -78,7 +78,7 @@ if ($admin_email != "" && $admin_password != "") {
     } else if ((!$email_admin_validation || !$password_admin_validation) && (!$email_validation && !$password_validation)) { //not regex pattern compliant -> cannot be in the database, don't query the database, return feedback
 
         //echo "not regex compliant -> wrong email or password -> feedback message";
-        //$_SESSION["msgid"] = "807";
+        $_SESSION["msgid"] = "807";
         header('Location: ../../Views/Index/indexAdmin.view.php');
     }
 }

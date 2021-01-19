@@ -7,8 +7,7 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
 
 <div class="row">
     <div class="col-lg-8" style="margin: auto">
-        <form name="formSettingsBasics"  action="../../Controllers/Settings/settings.controller.php" method="post"
-              novalidate>
+        <form name="formSettingsBasics"  action="../../Controllers/Settings/settings.controller.php" method="post">
             <button type="submit" style="float: right" id="deleteUserAccount" name="deleteUserAccount"
                     class="btn btn-warning">Delete account</button>
             <div class="form-group">
@@ -21,8 +20,7 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
                            echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
                        } ?>"
                        id="formSettingsBasicsFirstName" name="formSettingsBasicsFirstName"
-                       placeholder="Enter your first name"
-                       onkeyup="jsSettingsValidateName('formSettingsBasicsFirstName')"
+                       placeholder="Enter your first name (min 3 chars.)"
                        value="<?php echo $dbUserRow['user_firstname']; ?>">
 
                 <?php if ($_SESSION["msgid"] == "201") { ?>
@@ -41,7 +39,7 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
                            echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
                        } ?>"
                        id="formSettingsBasicsLastName" name="formSettingsBasicsLastName"
-                       placeholder="Enter your last name" onkeyup="jsSettingsValidateName('formSettingsBasicsLastName')"
+                       placeholder="Enter your last name (min 3 chars.)"
                        value="<?php echo $dbUserRow['user_lastname']; ?>">
 
                 <?php if ($_SESSION["msgid"] == "202") { ?>
@@ -61,8 +59,7 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
                                echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
                            } ?>"
                            id="formSettingsBasicsNickName" name="formSettingsBasicsNickName"
-                           placeholder="Enter your nickname"
-                           onkeyup="jsSettingsValidateName('formSettingsBasicsNickName')"
+                           placeholder="Enter your nickname (min 3 chars.)"
                            value="<?php echo $dbUserRow['user_nickname']; ?>">
 
                     <?php if ($_SESSION["msgid"] == "203") { ?>
@@ -100,7 +97,7 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
                                echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
                            } ?>"
                            id="formSettingsBasicsTown" name="formSettingsBasicsTown"
-                           placeholder="Enter your town" onkeyup="jsSettingsValidateName('formSettingsBasicsTown')"
+                           placeholder="Enter your town (min 3 chars.)"
                            value="<?php echo $dbUserRow['user_town']; ?>">
 
                     <?php if ($_SESSION["msgid"] == "205") { ?>
@@ -119,8 +116,7 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
                                echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
                            } ?>"
                            id="formSettingsBasicsHobbies" name="formSettingsBasicsHobbies"
-                           placeholder="Enter your hobbies"
-                           onkeyup="jsSettingsValidateHobbies('formSettingsBasicsHobbies')"
+                           placeholder="Enter your hobbies (min 1 char.)"
                            value="<?php echo $dbUserRow['user_hobbies']; ?>">
 
                     <?php if ($_SESSION["msgid"] == "206") { ?>

@@ -23,7 +23,7 @@ require('../../model.php'); ?>
             <h1>onLinely</h1>
         </div>
         <div class="col-lg-6">
-            <form name="formSignIn" action="../../Controllers/Index/signin.controller.php" method="post" novalidate>
+            <form name="formSignIn" action="../../Controllers/Index/signin.controller.php" method="post">
                 <div class="form-inline">
                     <label class="sr-only" for="formSignInEmail">Email</label>
                     <input type="email"
@@ -31,11 +31,9 @@ require('../../model.php'); ?>
                                echo 'is-valid';
                            } else {
                                echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
-                           } ?>""
+                           } ?>"
                            id="formSignInEmail"
-                           name="formSignInEmail" placeholder="Email"
-                           onkeyup="jsSignInValidateEmail()">
-
+                           name="formSignInEmail" placeholder="Email" required>
 
                     <label class="sr-only" for="formSignInPassword">Password</label>
                     <input type="password"
@@ -43,9 +41,8 @@ require('../../model.php'); ?>
                                echo 'is-valid';
                            } else {
                                echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
-                           } ?>""
-                           id="formSignInPassword" name="formSignInPassword" placeholder="Password"
-                           onkeyup="jsSignInValidatePassword()">
+                           } ?>"
+                           id="formSignInPassword" name="formSignInPassword" placeholder="Password" required>
 
                     <button type="submit" id="formSignInSubmit" class="btn btn-warning btn-sm">Sign In</button>
                 </div>
@@ -55,6 +52,11 @@ require('../../model.php'); ?>
                     </div>
                 <?php } ?>
                 <?php if ($_SESSION['msgid'] == "806") { ?>
+                    <div class="mt-2 text-warning">
+                        <?php echo(phpShowInputFeedback($_SESSION['msgid'])[1]); ?>
+                    </div>
+                <?php } ?>
+                <?php if ($_SESSION['msgid'] == "807") { ?>
                     <div class="mt-2 text-warning">
                         <?php echo(phpShowInputFeedback($_SESSION['msgid'])[1]); ?>
                     </div>

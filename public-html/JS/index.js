@@ -5,29 +5,17 @@ var jsSignUpPasswordAdmin = document.getElementById("formSignUpPasswordAdmin");
 var jsSignUpPasswordConf = document.getElementById("formSignUpPasswordConf");
 var jsSignUpPasswordConfAdmin = document.getElementById("formSignUpPasswordConfAdmin");
 
-var jsSignInEmail = document.getElementById("formSignInEmail");
-var jsSignInEmailAdmin = document.getElementById("formSignInEmailAdmin");
-var jsSignInPassword = document.getElementById("formSignInPassword");
-var jsSignInPasswordAdmin = document.getElementById("formSignInPasswordAdmin");
-var jsEmailRegexPattern = /^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$/;
-var jsPasswordRegexPattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@*$#]).{8,16}/;
+var jsEmailRegexPattern = /^[\w]+@[\w]+\.+[\w]{2,3}$/;
+var jsPasswordRegexPattern = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/;
 
     document.getElementById("formSignUpSubmit").disabled = true;
     document.getElementById("formSignUpSubmit").classList.remove("btn-info");
     document.getElementById("formSignUpSubmit").classList.add("btn-secondary");
 
-    document.getElementById("formSignInSubmit").disabled = true;
-    document.getElementById("formSignInSubmit").classList.remove("btn-info");
-    document.getElementById("formSignInSubmit").classList.add("btn-light");
-
-
     document.getElementById("formSignUpSubmitAdmin").disabled = true;
     document.getElementById("formSignUpSubmitAdmin").classList.remove("btn-warning");
     document.getElementById("formSignUpSubmitAdmin").classList.add("btn-secondary");
 
-    document.getElementById("formSignInSubmitAdmin").disabled = true;
-    document.getElementById("formSignInSubmitAdmin").classList.remove("btn-info");
-    document.getElementById("formSignInSubmitAdmin").classList.add("btn-light");
 
 
 function jsSignUpSubmitEnable() {
@@ -58,30 +46,6 @@ function jsSignUpSubmitEnableAdmin() {
     }
 }
 
-function jsSignInSubmitEnable() {
-    if (jsEmailRegexPattern.test(jsSignInEmail.value) && jsPasswordRegexPattern.test(jsSignInPassword.value) ) {
-        document.getElementById("formSignInSubmit").disabled = false;
-        document.getElementById("formSignInSubmit").classList.remove("btn-light");
-        document.getElementById("formSignInSubmit").classList.add("btn-warning");
-    }else{
-        document.getElementById("formSignInSubmit").disabled = true;
-        document.getElementById("formSignInSubmit").classList.remove("btn-warning");
-        document.getElementById("formSignInSubmit").classList.add("btn-light");
-    }
-}
-
-function jsSignInSubmitEnableAdmin() {
-    if (jsEmailRegexPattern.test(jsSignInEmailAdmin.value) && jsPasswordRegexPattern.test(jsSignInPasswordAdmin.value)) {
-        document.getElementById("formSignInSubmitAdmin").disabled = false;
-        document.getElementById("formSignInSubmitAdmin").classList.remove("btn-light");
-        document.getElementById("formSignInSubmitAdmin").classList.add("btn-info");
-    }else{
-        document.getElementById("formSignInSubmitAdmin").disabled = true;
-        document.getElementById("formSignInSubmitAdmin").classList.remove("btn-info");
-        document.getElementById("formSignInSubmitAdmin").classList.add("btn-light");
-    }
-}
-
 function jsSignUpValidateEmail() {
     jsSignUpSubmitEnable();
     if(!jsEmailRegexPattern.test(jsSignUpEmail.value)) {
@@ -104,16 +68,6 @@ function jsSignUpValidateEmail() {
     }
 }
 
-function jsSignInValidateEmail() {
-    jsSignInSubmitEnable();
-    if(!jsEmailRegexPattern.test(jsSignInEmail.value)) {
-        jsSignInEmail.classList.add("is-invalid");
-    }else{
-        jsSignInEmail.classList.remove("is-invalid");
-        jsSignInEmail.classList.add("is-valid");
-    }
-}
-
 function jsSignUpValidatePassword() {
     jsSignUpSubmitEnable();
     if (!jsPasswordRegexPattern.test(jsSignUpPassword.value)) {
@@ -122,9 +76,8 @@ function jsSignUpValidatePassword() {
             var newElement = document.createElement("div");
             newElement.setAttribute("id", "formSignUpPasswordInvalidFeedback");
             newElement.classList.add("invalid-feedback");
-            var newElementContent = document.createTextNode("Password must be between 8 and 16 characters long, " +
-                "with at least one uppercase and lowercase character, one number and one special character " +
-                "(@, *, $ or #).");
+            var newElementContent = document.createTextNode("Password must be between 8 and 15 characters long, " +
+                "with at least one uppercase and lowercase character and one number.");
             newElement.appendChild(newElementContent);
             jsSignUpPassword.parentNode.insertBefore(newElement, jsSignUpPassword.nextSibling);
         }
@@ -154,16 +107,6 @@ function jsSignUpValidatePassword() {
     }
 }
 
-function jsSignInValidatePassword() {
-    jsSignInSubmitEnable();
-    if(!jsPasswordRegexPattern.test(jsSignInPassword.value)) {
-        jsSignInPassword.classList.add("is-invalid");
-    }else{
-        jsSignInPassword.classList.remove("is-invalid");
-        jsSignInPassword.classList.add("is-valid");
-    }
-}
-
 function jsSignUpValidateEmailAdmin() {
     jsSignUpSubmitEnableAdmin();
     if(!jsEmailRegexPattern.test(jsSignUpEmailAdmin.value)) {
@@ -186,16 +129,6 @@ function jsSignUpValidateEmailAdmin() {
     }
 }
 
-function jsSignInValidateEmailAdmin() {
-    jsSignInSubmitEnableAdmin();
-    if(!jsEmailRegexPattern.test(jsSignInEmailAdmin.value)) {
-        jsSignInEmailAdmin.classList.add("is-invalid");
-    }else{
-        jsSignInEmailAdmin.classList.remove("is-invalid");
-        jsSignInEmailAdmin.classList.add("is-valid");
-    }
-}
-
 function jsSignUpValidatePasswordAdmin() {
     jsSignUpSubmitEnableAdmin();
     if (!jsPasswordRegexPattern.test(jsSignUpPasswordAdmin.value)) {
@@ -205,8 +138,7 @@ function jsSignUpValidatePasswordAdmin() {
             newElement.setAttribute("id", "formSignUpPasswordAdminInvalidFeedback");
             newElement.classList.add("invalid-feedback");
             var newElementContent = document.createTextNode("Password must be between 8 and 16 characters long, " +
-                "with at least one uppercase and lowercase character, one number and one special character " +
-                "(@, *, $ or #).");
+                "with at least one uppercase and lowercase character and one number.");
             newElement.appendChild(newElementContent);
             jsSignUpPasswordAdmin.parentNode.insertBefore(newElement, jsSignUpPasswordAdmin.nextSibling);
         }
@@ -233,15 +165,5 @@ function jsSignUpValidatePasswordAdmin() {
         }
         jsSignUpPasswordConfAdmin.classList.remove("is-invalid");
         jsSignUpPasswordConfAdmin.classList.add("is-valid");
-    }
-}
-
-function jsSignInValidatePasswordAdmin() {
-    jsSignInSubmitEnableAdmin();
-    if(!jsPasswordRegexPattern.test(jsSignInPasswordAdmin.value)) {
-        jsSignInPasswordAdmin.classList.add("is-invalid");
-    }else{
-        jsSignInPasswordAdmin.classList.remove("is-invalid");
-        jsSignInPasswordAdmin.classList.add("is-valid");
     }
 }

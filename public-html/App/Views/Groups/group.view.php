@@ -23,7 +23,7 @@ if (($_GET["gid"] != "") && (phpGetGroupOwnerID($_GET["gid"]) == $_SESSION["uid"
 
 <div class="row">
     <div class="col-lg-12">
-        <form name="formGroup" action="../../Controllers/Groups/group.controller.php" method="post" novalidate>
+        <form name="formGroup" action="../../Controllers/Groups/group.controller.php" method="post">
             <div class="form-group">
                 <label for="formGroupName">Group name</label>
                 <input type="text"
@@ -33,7 +33,7 @@ if (($_GET["gid"] != "") && (phpGetGroupOwnerID($_GET["gid"]) == $_SESSION["uid"
                            echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
                        } ?>"
                        id="formGroupName" name="formGroupName" placeholder="Enter group name"
-                       onkeyup="jsGroupValidateName('formGroupName')" value="<?php echo $_SESSION['group_name']; ?>">
+                       value="<?php echo $_SESSION['group_name']; ?>" required>
 
                 <?php if ($_SESSION["msgid"] == "401") { ?>
                     <div class="invalid-feedback">
@@ -48,7 +48,6 @@ if (($_GET["gid"] != "") && (phpGetGroupOwnerID($_GET["gid"]) == $_SESSION["uid"
     </div>
 </div>
 
-<script src="../../../JS/group.js"></script>
 
 <?php
 $_SESSION['group_name'] = "";

@@ -13,15 +13,14 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form name="formPosts" action="../../Controllers/Groups/posts.controller.php" method="post" novalidate>
+        <form name="formPosts" action="../../Controllers/Groups/posts.controller.php" method="post">
 
-            <div class="form-group">
+            <div class="form-group" >
                 <label for="formPostsContent">Create a new post</label>
                 <textarea class="form-control <?php if ($_SESSION['msgid']!='501' && $_SESSION['msgid']!='')
                 { echo 'is-valid'; }else{ echo (phpShowInputFeedback($_SESSION['msgid'])[0]); } ?>"
                           id="formPostsContent" name="formPostsContent"
-                          placeholder="Write the post here. Tags are not allowed."
-                          onkeyup="jsPostsValidateTextArea('formPostsContent')"><?php echo $_SESSION["posts_content"];?></textarea>
+                          placeholder="Write the post here. Tags are not allowed." required><?php echo $_SESSION["posts_content"];?></textarea>
 
                 <?php if ($_SESSION["msgid"]=="501") { ?>
                     <div class="invalid-feedback">
@@ -66,7 +65,6 @@ $dbUserIsAdmin = phpGetUserData($_SESSION["uid"]);
 </div>
 
 
-<script src="../../../JS/posts.js"></script>
 
 <?php
 $_SESSION["posts_content"] = "";

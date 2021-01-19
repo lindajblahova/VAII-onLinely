@@ -55,11 +55,6 @@ function phpShowSystemFeedback($feedback_id) {
             $feedback_text="This email is already used!";
             break;
 
-        case "808":
-            $feedback_type="danger";
-            $feedback_text="Wrond email or password!";
-            break;
-
         case "811":
             $feedback_type="success";
             $feedback_text="Your account has been created! You can sign in!";
@@ -129,7 +124,7 @@ function phpShowInputFeedback($feedback_id) {
 
         case "802":
             $feedback_type="is-invalid";
-            $feedback_text="Password must be between 8 and 16 characters long, with at least one uppercase and lowercase character, one number and one special character (@, *, $ or #).";
+            $feedback_text="Password must be between 8 and 16 characters long, with at least one uppercase and lowercase character and one number.";
             break;
 
         case "803":
@@ -147,10 +142,10 @@ function phpShowInputFeedback($feedback_id) {
             $feedback_text="The password is incorrect!";
             break;
 
-       /* case "807":
+        case "807":
             $feedback_type="is-invalid";
             $feedback_text="Some of your inputs must be wrong!";
-            break;*/
+            break;
 
         default:
             $feedback_type="";

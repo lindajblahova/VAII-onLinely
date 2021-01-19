@@ -33,7 +33,7 @@ $dbUserIsAdmin = phpGetUserData($_SESSION["uid"]);
             <?php if (($_SESSION["uid"] == $dbGroupRow["group_owner_id"]) || ($dbUserIsAdmin["user_role"] == 0)) { ?>
 
                 <!-- Create a form -->
-                <form action="../../Controllers/Groups/group.delete.controller.php" method="post" novalidate>
+                <form action="../../Controllers/Groups/group.delete.controller.php" method="post">
                     <input type="hidden" name="formGroupsGroupID"
                            value="<?php echo $dbGroupRow["group_id"]; ?>">
 

@@ -136,10 +136,6 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
 </div>
 
 
-<?php $_SESSION["msgid"] = ""; ?>
-
-<script src="../../../JS/gate.js">
-</script>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -153,3 +149,5 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
         crossorigin="anonymous"></script>
 </body>
 </html>
+
+<?php $_SESSION["msgid"] = ""; ?>
