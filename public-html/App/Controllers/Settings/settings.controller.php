@@ -10,23 +10,24 @@ if (isset($_POST["formSettingsBasicsSubmit"])) {
     $user_age = $_POST["formSettingsBasicsAge"];
     $user_town = $_POST["formSettingsBasicsTown"];
     $user_hobbies = $_POST["formSettingsBasicsHobbies"];
-    $user_names_pattern = "~^[a-zA-Z]{3,15}$~";
+    $user_names_pattern = "~^[a-zA-Z]{1,}$~";
+    $user_nickname_pattern = "~^[a-zA-Z0-9]{1,}$~";
     $user_age_pattern = "~^[0-9]{1,2}$~";
     $hobbies_content_pattern = "~^[^<>]{1,}$~";
 
     $firstname_validation = preg_match($user_names_pattern, $user_firstname);
     $lastname_validation = preg_match($user_names_pattern, $user_lastname);
-    $nickname_validation = preg_match($user_names_pattern, $user_nickname);
+    $nickname_validation = preg_match($user_nickname_pattern, $user_nickname);
     $town_validation = preg_match($user_names_pattern, $user_town);
     $age_validation = preg_match($user_age_pattern, $user_age);
     $hobbies_validation = preg_match($hobbies_content_pattern, $user_hobbies);
 
-    //query the database only if at least one name matches the regex pattern
+
     if ($firstname_validation || $lastname_validation || $nickname_validation || $town_validation || $age_validation || $hobbies_validation) {
-        //get the current values from the database and store them so we can potentially save them back if some value is actually empty
+        //get the current values from the database if empty submit
         $dbUserRow = phpGetUserData($_SESSION["uid"]);
 
-        //check each of the three inputs validation, if not valid, assign the db value instead
+        //if not valid, assign db value
         if (!$firstname_validation) {
             $user_firstname = $dbUserRow["user_firstname"];
         }
@@ -46,15 +47,13 @@ if (isset($_POST["formSettingsBasicsSubmit"])) {
             $user_hobbies = $dbUserRow["user_hobbies"];
         }
 
-        //update the database row
         phpUpdateUserData($user_firstname, $user_lastname, $user_nickname, $user_age, $user_town, $user_hobbies, $_SESSION["uid"]);
 
-        //system feedback - your settings has been updated
+        //system feedback
         $_SESSION["msgid"] = "211";
 
-
     } else {
-        //input feedback - for Javascript turned off
+        //input feedback
         if (!$firstname_validation && $user_firstname != "") {
             $_SESSION["msgid"] = "201";
         } else if (!$lastname_validation && $user_lastname != "") {
@@ -74,10 +73,10 @@ if (isset($_POST["formSettingsBasicsSubmit"])) {
 
 
 if (isset($_POST["formSettingsBasicsClear"])) {
-    //update the database row by setting empty strings
-    phpClearUserData($_SESSION["uid"]);
+    //
+    phpUpdateUserData("", "", "", NULL, "", "", $_SESSION["uid"]);
 
-    //system feedback - your settings has been updated
+    //system feedback
     $_SESSION["msgid"] = "212";
     header('Location: ../../Views/Gate/gate.view.php?module=settings');
 }
@@ -85,10 +84,10 @@ if (isset($_POST["formSettingsBasicsClear"])) {
 
 
 if (isset($_POST["deleteUserAccount"])) {
-    //update the database row by setting empty strings
+
     phpDeleteUser($_SESSION["uid"]);
 
-    //system feedback - your settings has been updated
+    //system feedback
     $_SESSION["msgid"] = "212";
     $_SESSION["uid"] = "";
     header('Location: ../../Views/Index/index.view.php');

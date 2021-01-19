@@ -36,17 +36,17 @@ function phpShowInputFeedback($feedback_id) {
 
         case "201":
             $feedback_type="is-invalid";
-            $feedback_text="First name must be between 3 and 50 characters long and can contain only letters.";
+            $feedback_text="First name must be min. 1 character long and must contain only letters.";
             break;
 
         case "202":
             $feedback_type="is-invalid";
-            $feedback_text="Last name must be between 3 and 50 characters long and can contain only letters.";
+            $feedback_text="Last name must be min. 1 character long and must contain only letters.";
             break;
 
         case "203":
             $feedback_type="is-invalid";
-            $feedback_text="Nickname must be between 3 and 50 characters long and can contain only letters.";
+            $feedback_text="Nickname must be min. 1 character long and may content only letters and numbers.";
             break;
 
         case "204":
@@ -56,7 +56,7 @@ function phpShowInputFeedback($feedback_id) {
 
         case "205":
             $feedback_type="is-invalid";
-            $feedback_text="Town must be between 3 and 50 characters long and can contain only letters.";
+            $feedback_text="Town must be min. 1 character long and must contain only letters.";
             break;
 
         case "206":
@@ -157,14 +157,6 @@ function phpUpdateUserData($user_firstname, $user_lastname, $user_nickname, $use
     $db_data = "";
 }
 
-function phpClearUserData($user_id)
-{
-    $db_data = array("", "", "", NULL, "", "", $user_id);
-    phpModifyDB('UPDATE user SET user_firstname = ?, user_lastname = ?, user_nickname = ?, 
-        user_age = ?, user_town = ?, user_hobbies = ? WHERE user_id = ?', $db_data);
-    $db_data = "";
-}
-
 function phpDeleteUser($user_id)
 {
     $db_data = array($user_id,$user_id);
@@ -216,14 +208,6 @@ function phpUpdateGroupName($group_name, $group_id)
 {
     $db_data = array($group_name, $group_id);
     phpModifyDB('UPDATE groups SET group_name = ? WHERE group_id = ?', $db_data);
-    $db_data = "";
-}
-
-function phpDeleteGroup($group_id)
-{
-    $db_data = array($group_id);
-    phpModifyDB('DELETE FROM posts WHERE post_group_id = ?', $db_data);
-    phpModifyDB('DELETE FROM groups WHERE group_id = ?', $db_data);
     $db_data = "";
 }
 

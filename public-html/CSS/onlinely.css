@@ -134,6 +134,16 @@ ul {
     color: dimgray;
 }
 
+.my_group_link {
+    font-size: xx-large;
+    color: #17a2b8
+}
+
+.my_group_link:hover {
+    text-decoration: none;
+    color: #004d60;
+}
+
 .my_button_float_right {
     float: right;
 }
@@ -149,10 +159,7 @@ html {
 }
 
 @media (max-width: 992px) {
-    .group_content {
-        background-color: #ffffff;
-        border:0;
-    }
+
     .float-right {
         float: left!important;
     }
@@ -209,6 +216,10 @@ html {
         font-size: small;
         margin-bottom: 10px;
         margin-top: 20px;
+    }
+
+    .my_group_link {
+        font-size: medium;
     }
 
 }

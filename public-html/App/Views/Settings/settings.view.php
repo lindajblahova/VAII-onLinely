@@ -11,7 +11,6 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
             <button type="submit" style="float: right" id="deleteUserAccount" name="deleteUserAccount"
                     class="btn btn-warning">Delete account</button>
             <div class="form-group">
-
                 <label for="formSettingsBasicsFirstName" class="mt-3">First name</label>
                 <input type="text"
                        class="form-control <?php if ($_SESSION['msgid'] != '201' && $_SESSION['msgid'] != '') {
@@ -20,7 +19,7 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
                            echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
                        } ?>"
                        id="formSettingsBasicsFirstName" name="formSettingsBasicsFirstName"
-                       placeholder="Enter your first name (min 3 chars.)"
+                       placeholder="Enter your first name (min 1 char.)"
                        value="<?php echo $dbUserRow['user_firstname']; ?>">
 
                 <?php if ($_SESSION["msgid"] == "201") { ?>
@@ -39,7 +38,7 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
                            echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
                        } ?>"
                        id="formSettingsBasicsLastName" name="formSettingsBasicsLastName"
-                       placeholder="Enter your last name (min 3 chars.)"
+                       placeholder="Enter your last name (min 1 char.)"
                        value="<?php echo $dbUserRow['user_lastname']; ?>">
 
                 <?php if ($_SESSION["msgid"] == "202") { ?>
@@ -59,7 +58,7 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
                                echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
                            } ?>"
                            id="formSettingsBasicsNickName" name="formSettingsBasicsNickName"
-                           placeholder="Enter your nickname (min 3 chars.)"
+                           placeholder="Enter your nickname (min 1 char.)"
                            value="<?php echo $dbUserRow['user_nickname']; ?>">
 
                     <?php if ($_SESSION["msgid"] == "203") { ?>
@@ -97,7 +96,7 @@ $dbUserRow = phpGetUserData($_SESSION["uid"]);
                                echo(phpShowInputFeedback($_SESSION['msgid'])[0]);
                            } ?>"
                            id="formSettingsBasicsTown" name="formSettingsBasicsTown"
-                           placeholder="Enter your town (min 3 chars.)"
+                           placeholder="Enter your town (min 1 char.)"
                            value="<?php echo $dbUserRow['user_town']; ?>">
 
                     <?php if ($_SESSION["msgid"] == "205") { ?>

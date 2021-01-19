@@ -14,9 +14,7 @@ $dbMyProfile = phpGetUserData($_SESSION["uid"]);
 </div>
 <hr>
 
-
 <div class="row">
-
     <div class="jumbotron col-lg-12">
         <h1 class="display-4 text-info">
             <img class="icon" src="../../../IMG/icon-email.png" alt="User's email">
@@ -48,8 +46,6 @@ $dbMyProfile = phpGetUserData($_SESSION["uid"]);
         <h5>Profiles</h5>
         <hr>
     </div>
-
-
     <div class="form-group col-lg-3 mt-3">
         <input type="text" class="form-control "
                id="searchUserProfilesForm" onkeyup="jssearchUserProfilesForm()" placeholder="Search profile by email"
