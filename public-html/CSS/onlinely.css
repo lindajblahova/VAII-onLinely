@@ -83,7 +83,7 @@ hr {
 .table td.group_header {
     font-size: 1em;
     background-color: #e9ecef;
-    border-top: 4px solid white;
+    border-top: 4px solid #ffffff;
 }
 
 .form_posts_content {
@@ -203,6 +203,11 @@ html {
     .smaller_margin {
         margin-top: 0px;
         margin-bottom: 25px;
+    }
+
+    .group_content {
+        background-color: #ffffff;
+        border:0;
     }
 
 }
